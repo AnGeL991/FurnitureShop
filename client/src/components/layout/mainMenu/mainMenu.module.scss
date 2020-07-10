@@ -1,0 +1,114 @@
+@import "../../../styles/settings.scss";
+
+.mainMenu {
+  font-family: $font-family;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1220px;
+  font-size: 16px;
+  font-weight: 400;
+  position: relative;
+}
+.navLeft,
+li,
+.navMidle,
+.navRight,.basket,.searchBox {
+  display: inline-block;
+}
+.navLeft {
+  margin-left:20%;
+  overflow: hidden;
+  padding: 0;
+  width: 55%;
+  left:20%;
+ 
+  li {
+    margin-top: 20px;
+    padding: 20px;
+    transition: 0.1s linear all;
+    position: relative;
+    a {
+      color:#343538;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    &::after{
+      content:"";
+      left: 15px;
+      bottom:15px;
+      height: 1px;
+      width: 0;
+      position: absolute;
+      background-color: #b74334;
+      transition: 0.2s linear all;
+      
+    }
+    &:hover::after{
+      width: 100%;
+    }
+    &:hover a {
+       color: #b74434;
+    }
+  }
+ 
+}
+.navMidle {
+  img{
+    width: 100%;
+    height: 100%;
+  }
+  width: 15%;
+  position: absolute;
+}
+.navRight{
+  position: absolute;
+  top:50%;
+  right: 0;
+  transform: translateY(-25%);
+  width: 30%;
+  text-align: right;
+  .basket{
+  margin-right: 10%;
+  position: relative;
+  .basketQuantity{
+    text-align: center;
+    position: absolute;
+    color:white;
+    left:80%;
+    top:-20%;
+    transform: translateY(-25%);
+    font-size: 12px;
+    width: 14px;
+    height: 14px;
+    background-color:  #b74434;
+    border-radius: 50%;
+  }
+  }
+  .searchBox{
+    
+    input {
+      width: 80%;
+      border:1px solid gray;
+      background-color: transparent;
+      padding: 5px;
+      border-radius: 24px;
+      outline: none;
+      transition:0.1s linear all;
+    }
+    .btnSubmit{
+      border:none;
+      background-color: transparent;
+    }
+    .hiden{
+      display: none;
+    }
+  }
+}
+.icon{
+  font-size: 20px;
+  color:#343538;
+  transition: 0.1s linear all;
+  &:hover{
+    color: #b74434;
+  }
+}

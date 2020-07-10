@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/normalize.scss";
+import 'normalize.css';
 import { Switch, Route } from "react-router-dom";
 import Home from "./components/pages/home/home";
 import PageNoFound from "./components/pages/pageNoFound/pageNoFound";
