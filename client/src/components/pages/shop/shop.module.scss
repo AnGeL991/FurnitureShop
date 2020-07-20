@@ -1,0 +1,235 @@
+@import "../../../styles/settings.scss";
+
+.page {
+    margin-top: 130px;
+    font-family: $font-family;
+}
+
+.shopCard {
+    max-width: 1220px;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: 0.3fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.aside {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.asideInner {
+    padding: 10px;
+
+    >div {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .widgetProductSearch {
+        border: 0.5px solid gray;
+        border-radius: 24px;
+        margin: 10px;
+        padding: 10px;
+
+        .inputSearch {
+            width: 90%;
+            height: 100%;
+            border: none;
+            outline: none;
+        }
+
+        .searchButton {
+            font-size: 18px;
+            color: #9d9d9d;
+            text-align: right;
+            border: none;
+            background-color: transparent;
+            width: 10%;
+        }
+    }
+
+    .categoriesMenu {
+        >ul {
+            padding: 0;
+        }
+
+        .categoriesLink {
+            width: 100%;
+            transition: 0.2s linear all;
+            padding: 15px;
+
+            a {
+                color: #9d9d9d;
+            }
+
+            &:hover a {
+                color: #b74334;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .priceFilter {
+        .SliderAmount {
+            position: relative;
+        }
+
+        .priceTitle {
+            font-size: 20px;
+            margin-top: 0;
+            font-weight: 500;
+        }
+
+        .priceLabel {
+            position: absolute;
+            top: 40%;
+            transform: translateY(-50%);
+            color: #9d9d9d;
+            padding: 10px 0;
+
+            span {
+                padding: 2px;
+            }
+            
+        }
+
+        .amountButton {
+            background-color: #b74334;
+            border: none;
+            margin-top: 50px;
+            width: 40%;
+            padding: 10px;
+            font-size: 14px;
+            text-transform: capitalize;
+            color: white;
+        }
+    }
+
+}
+
+.contentBox {
+ 
+    grid-area: 1 / 2 / 2 / 3;
+
+    .toolbar {
+
+        padding: 10px;
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        grid-template-rows: 0.1fr;
+        color: gray;
+        font-size: 14px;
+
+        .toolbarLeft {
+
+            grid-area: 1 / 1 / 2 / 2;
+
+            .resultCount,
+            .vievCount {
+                display: inline-block;
+                width: 50%;
+            }
+
+            p,
+            ul {
+                display: inherit;
+                padding-left: 10px;
+            }
+
+        }
+
+
+
+        .amount {
+            padding: 5px;
+            cursor: pointer;
+
+            &:hover {
+                color: #b74334;
+            }
+        }
+
+        .toolbarRight {
+            grid-area: 1 / 2 / 2 / 3;
+
+            .showList {
+                border: 1px solid #9d9d9d;
+                z-index: 99999;
+                position: absolute;
+                top: 60%;
+                right: -1px;
+                padding: 0;
+                text-align: left;
+                width: 200%;
+                visibility: hidden;
+                transition: 0.2s linear all;
+                transform: translateY(20%);
+                opacity: 0;
+                background-color: white;
+                overflow: hidden;
+                li {
+                  
+                    display: inline-block;
+                    padding:5px;
+                    width: 100%;
+                    a{
+                        border-radius: 4px;
+                        display: block;
+                        padding:10px;
+                        color:gray;
+                        width: 100%;
+                        font-size: 12px;
+                    }
+                    &:hover a {
+                        background-color: #b74334;
+                        color: white;
+                    }
+                }
+
+                .active {
+                    background-color: #b74334;
+                    color: white;
+                }
+            }
+
+            &:hover .showList {
+                opacity: 1;
+                transform: translateY(0%);
+               visibility: unset;
+            }
+
+            .ordering {
+                position: relative;
+                margin-left: 130px;
+                text-align: center;
+                width: 40%;
+                padding: 10px;
+                margin-top: 10px;
+                border: 1px solid #9d9d9d;
+                transition: 5s linear all;
+                p {
+                    margin: 0;
+                }
+
+                .icon {
+                    width: 1.625em;
+                    vertical-align: none;
+                    transform: translateY(-10%);
+
+                }
+
+                &:hover {
+                    .icon {
+                        transform: rotate(180deg) translateY(-20%);
+                    }
+
+                    ;
+                }
+            }
+
+
+
+        }
+    }
+
+}

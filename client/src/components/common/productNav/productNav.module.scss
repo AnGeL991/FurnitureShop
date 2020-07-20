@@ -1,0 +1,34 @@
+.productNav {
+    margin-left: 20%;
+    overflow: hidden;
+    padding: 0;
+    width: 55%;
+    left: 50%;
+    li {
+      margin-top: 20px;
+      padding: 20px;
+      transition: 0.1s linear all;
+      position: relative;
+      a {
+        color: #343538;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+      &::after {
+        content: "";
+        left: 15px;
+        bottom: 15px;
+        height: 1px;
+        width: 0;
+        position: absolute;
+        background-color: #b74334;
+        transition: 0.2s linear all;
+      }
+      &:hover::after {
+        width: 100%;
+      }
+      &:hover a {
+        color: #b74434;
+      }
+    }
+  }

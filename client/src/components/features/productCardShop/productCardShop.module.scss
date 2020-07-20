@@ -1,0 +1,124 @@
+@import '../../../styles/settings.scss';
+
+.contentBox {
+
+    grid-area: 1 / 2 / 2 / 3;
+
+    .toolbar {
+
+        padding: 10px;
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        grid-template-rows: 0.1fr;
+        color: gray;
+        font-size: 14px;
+
+        .toolbarLeft {
+
+            grid-area: 1 / 1 / 2 / 2;
+
+            .resultCount,
+            .vievCount {
+                display: inline-block;
+                width: 50%;
+            }
+
+            p,
+            ul {
+                display: inherit;
+                padding-left: 10px;
+            }
+
+        }
+
+        .amount {
+            padding: 5px;
+            cursor: pointer;
+
+            &:hover {
+                color: #b74334;
+            }
+        }
+
+        .toolbarRight {
+            grid-area: 1 / 2 / 2 / 3;
+
+            .showList {
+                border: 1px solid #9d9d9d;
+                z-index: 99999;
+                position: absolute;
+                top: 60%;
+                right: -1px;
+                padding: 0;
+                text-align: left;
+                width: 200%;
+                visibility: hidden;
+                transition: 0.2s linear all;
+                transform: translateY(20%);
+                opacity: 0;
+                background-color: white;
+                overflow: hidden;
+
+                li {
+
+                    display: inline-block;
+                    padding: 5px;
+                    width: 100%;
+
+                    a {
+                        border-radius: 4px;
+                        display: block;
+                        padding: 10px;
+                        color: gray;
+                        width: 100%;
+                        font-size: 12px;
+                    }
+
+                    &:hover a {
+                        background-color: #b74334;
+                        color: white;
+                    }
+                }
+
+                .active {
+                    background-color: #b74334;
+                    color: white;
+                }
+            }
+
+            &:hover .showList {
+                opacity: 1;
+                transform: translateY(0%);
+                visibility: unset;
+            }
+
+            .ordering {
+                position: relative;
+                margin-left: 130px;
+                text-align: center;
+                width: 40%;
+                padding: 10px;
+                margin-top: 10px;
+                border: 1px solid #9d9d9d;
+                transition: 5s linear all;
+
+                p {
+                    margin: 0;
+                }
+
+                .icon {
+                    width: 1.625em;
+                    vertical-align: none;
+                    transform: translateY(-10%);
+
+                }
+
+                &:hover {
+                    .icon {
+                        transform: rotate(180deg) translateY(-20%);
+                    }
+                }
+            }
+        }
+    }
+}

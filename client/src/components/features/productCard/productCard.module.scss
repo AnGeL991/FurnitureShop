@@ -1,0 +1,53 @@
+@import '../../../styles/settings.scss';
+.title {
+    font-family: $font-family;
+    font-size: 24px;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 30px;
+    font-weight: 300;
+}
+.ourProduct {
+  margin-bottom: 50px;
+
+  .title {
+    margin-bottom: 0;
+  }
+
+  .description {
+    color: gray;
+    font-family: $font-family;
+    font-weight: 100;
+    text-transform: uppercase;
+    margin-top: 0;
+    text-align: center;
+  }
+}
+
+.productSection {
+  margin: 0 auto;
+  max-width: 1440px;
+
+  .publicity,
+  .productCard,
+  .productBox {
+    display: inline-block;
+  }
+
+  .publicity {
+    width: 20%;
+    padding: 20px;
+    height: 100%;
+
+    .banner {
+      box-shadow: inset -27px -11px 300px -19px rgba(0, 0, 0, 0.75);
+      height: 100%;
+    }
+  }
+
+  .productCard {
+    padding: 20px;
+    height: 100%;
+    width: 80%;
+  }
+}

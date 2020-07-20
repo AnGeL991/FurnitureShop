@@ -1,0 +1,112 @@
+@import '../../../styles/settings.scss';
+
+.aboutPassion {
+    font-family: $font-family;
+    background-color: #f9f9f9;
+}
+
+.textBoxTop {
+    width: 50%;
+    margin: 0 auto;
+    letter-spacing: 2px;
+    line-height: 2;
+    text-align: center;
+    font-weight: 500;
+    color: gray;
+    padding-bottom: 30px;
+    overflow: hidden;
+}
+
+.textBoxbottom {
+    overflow: hidden;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    padding-bottom: 30px;
+
+    .columnFirst {
+        grid-area: 1/1/2/2;
+
+        .columnImage {
+            background-image: url('/image/workShop2.jpg');
+            grid-area: 1 / 1 / 2 / 2;
+
+        }
+
+        .columnDescription {
+            grid-area: 1 / 2 / 2 / 3;
+        }
+    }
+
+    .columnSecond {
+        grid-area: 2/1/3/2;
+
+        .columnImage {
+            background-image: url('/image/workShop1.jpg');
+            grid-area: 1 / 2 / 2 / 3;
+
+            .bgc {
+                background: rgb(183, 67, 52);
+                background: linear-gradient(90deg, rgba(183, 67, 52, 0) 0%, rgba(183, 67, 52, 0) 0%, rgba(183, 67, 52, 1) 100%);
+            }
+        }
+
+        .columnDescription {
+            grid-area: 1 / 1 / 2 / 2;
+
+        }
+    }
+
+    .columnThird {
+        grid-area: 3/1/4/2;
+
+        .columnImage {
+            background-image: url('/image/workShop3.jpg');
+            grid-area: 1 / 1 / 2 / 2;
+            background-position-y: 60%;
+        }
+
+        .columnDescription {
+            grid-area: 1 / 2 / 2 / 3;
+        }
+    }
+
+    .columnImage {
+        overflow: hidden;
+        background-repeat: no-repeat;
+        background-position-x: 60%;
+        background-position-y: 100%;
+        width: 650px;
+        height: 100%;
+        background-size: cover;
+        margin: 10px;
+
+        img {
+            object-fit: cover;
+        }
+
+        .bgc {
+            background: rgb(183, 67, 52);
+            background: linear-gradient(90deg, rgba(183, 67, 52, 1) 0%, rgba(183, 67, 52, 0) 100%, rgba(183, 67, 52, 0) 100%);
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .columnDescription {
+        letter-spacing: 2px;
+        color: gray;
+        line-height: 2;
+        font-size: 14px;
+    }
+
+    .columnFirst,
+    .columnSecond,
+    .columnThird {
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr;
+    }
+}
