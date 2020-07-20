@@ -1,0 +1,117 @@
+@import "../../../styles/settings.scss";
+
+.footer {
+  font-family: $font-family;
+  position: relative;
+
+  .topBorder,
+  .bottomBorder {
+    text-transform: uppercase;
+    border-top: 0.5px solid gray;
+    border-bottom: 0.5px solid gray;
+    text-align: center;
+    box-shadow: inset -27px -11px 300px -19px rgba(0, 0, 0, 0.75);
+  }
+
+  .bottomBorder {
+    text-transform: uppercase;
+    padding: 10px;
+    font-weight: 300;
+  }
+
+  .aboutCompany,
+  .information,
+  .fanPage {
+    text-align: center;
+    display: inline-block;
+    height: 100%;
+  }
+
+  .contentBox {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    margin: 0 auto;
+    max-width: 1440px;
+    text-align: center;
+
+    .aboutCompany {
+      grid-area: 1/1/2/2;
+    }
+
+    .information {
+      grid-area: 1/2/2/3;
+    }
+
+    .fanPage {
+      position: relative;
+      grid-area: 1/3/2/4;
+    }
+
+    .description {
+      padding: 10px;
+      font-size: 12px;
+      font-weight: 300;
+      text-align: left;
+    }
+  }
+
+  .title {
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 5px;
+  }
+
+  .instagram,
+  .facebook {
+    margin: 10px auto;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border-radius: 40px;
+    color: #fff;
+    font-size: 30px;
+    line-height: 43px;
+    vertical-align: middle;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.25);
+  }
+
+  .instagram {
+    background: #d6249f;
+    background: radial-gradient(
+      circle at 30% 107%,
+      #fdf497 0%,
+      #fdf497 5%,
+      #fd5949 45%,
+      #d6249f 60%,
+      #285aeb 90%
+    );
+  }
+
+  .facebook {
+    background: linear-gradient(120deg, #3b5998, #ffffff);
+  }
+}
+
+.footerList {
+  margin: 0;
+  padding: 0;
+
+  .eachList {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    &:hover a {
+        color:#b74434;
+    }
+    a {
+      transition: 0.2s linear all;
+      font-size: 12px;
+      font-weight: 400;
+      color: black;
+      text-transform: uppercase;
+    }
+  }
+}

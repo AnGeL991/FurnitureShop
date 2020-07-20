@@ -3,11 +3,14 @@
 .mainMenu {
   font-family: $font-family;
   width: 100%;
-  margin: 0 auto;
-  max-width: 1220px;
   font-size: 16px;
   font-weight: 400;
-  position: relative;
+  position: fixed;
+  top:0;
+  z-index: 999999;
+  background-color: white;
+  overflow: hidden;
+  letter-spacing: 2px;
 }
 .navLeft,
 li,
@@ -16,7 +19,7 @@ li,
   display: inline-block;
 }
 .navLeft {
-  margin-left:20%;
+  margin-left:25%;
   overflow: hidden;
   padding: 0;
   width: 55%;
@@ -28,7 +31,8 @@ li,
     transition: 0.1s linear all;
     position: relative;
     a {
-      color:#343538;
+       color:#343538;
+      //color:gray;
       text-decoration: none;
       text-transform: uppercase;
     }
@@ -53,10 +57,7 @@ li,
  
 }
 .navMidle {
-  img{
-    width: 100%;
-    height: 100%;
-  }
+  left:5%;
   width: 15%;
   position: absolute;
 }
@@ -66,7 +67,7 @@ li,
   right: 0;
   transform: translateY(-25%);
   width: 30%;
-  text-align: right;
+  text-align: center;
   .basket{
   margin-right: 10%;
   position: relative;

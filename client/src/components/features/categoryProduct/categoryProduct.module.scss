@@ -1,0 +1,100 @@
+@import '../../../styles/settings.scss';
+
+.aside {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.asideInner {
+    padding: 10px;
+
+    >div {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .widgetProductSearch {
+        border: 0.5px solid #d9d9d9;
+        border-radius: 24px;
+        margin: 10px;
+        padding: 10px;
+
+        .inputSearch {
+            width: 90%;
+            height: 100%;
+            border: none;
+            outline: none;
+        }
+
+        .searchButton {
+            font-size: 18px;
+            color: #9d9d9d;
+            text-align: right;
+            border: none;
+            background-color: transparent;
+            width: 10%;
+        }
+    }
+
+    .categoriesMenu {
+        >ul {
+            padding: 0;
+        }
+
+        .categoriesLink {
+            width: 100%;
+            transition: 0.2s linear all;
+            padding: 15px 0 ;
+
+            a {
+                color: gray;
+            }
+
+            &:hover a {
+                color: #b74334;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .priceFilter {
+        .SliderAmount {
+            position: relative;
+        }
+
+        .priceTitle {
+            font-size: 20px;
+            margin-top: 0;
+            font-weight: 500;
+        }
+
+        .priceLabel {
+            position: absolute;
+            top: 40%;
+            transform: translateY(-50%);
+            color: #9d9d9d;
+            padding: 10px 0;
+
+            span {
+                padding: 2px;
+            }
+            
+        }
+
+        .amountButton {
+            background-color: #b74334;
+            border: none;
+            margin-top: 50px;
+            width: 40%;
+            padding: 10px;
+            font-size: 14px;
+            text-transform: capitalize;
+            color: white;
+            transition: 0.2s linear all;
+            &:hover {
+              box-shadow: inset -27px -11px 300px -19px rgba(0, 0, 0, 0.75);;
+              background-color: transparent;
+            }
+        }
+    }
+
+}

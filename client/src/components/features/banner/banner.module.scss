@@ -1,0 +1,80 @@
+@import '../../../styles/settings.scss';
+.title {
+    font-family: $font-family;
+    font-size: 24px;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 50px 0;
+    border-top:0.5px solid gray;
+  }
+  .contentBox {
+    font-family: $font-family;
+    margin: 0 auto;
+    height: 70vh;
+    overflow: hidden;
+    .bannerFirst {
+      position: relative;
+      display: inline-block;
+      background-image: url("/image/header-1.jpg");
+      background-position: right;
+      background-size: cover;
+      height: 100%;
+      width: 50%;
+      color: white;
+      transition: 0.1s linear all;
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+    .bannerSecond {
+      display: inline-block;
+      background-image: url("/image/header-2.jpg");
+      background-position: right;
+      background-size: cover;
+      height: 100%;
+      width: 50%;
+      color: black;
+      position: relative;
+      transition: 0.1s linear all;
+      &:hover {
+        transform: scale(1.1);
+      }
+      .btn {
+        a {
+          color: black;
+        }
+      }
+    }
+    .subtitle {
+      position: absolute;
+      top: 20%;
+      left: 10%;
+      font-size: 34px;
+      font-weight: 700;
+    }
+    .description {
+      position: absolute;
+      top: 30%;
+      left: 10%;
+      font-weight: 700;
+    }
+    .btn {
+      position: absolute;
+      border: 1px solid black;
+      border-radius: 12px;
+      background-color: transparent;
+      padding: 20px;
+      top: 40%;
+      left: 25%;
+      a {
+        font-size: 22px;
+        font-weight: 700;
+        color: white;
+        text-decoration: none;
+      }
+      &:hover {
+        background-color: rgba(#36454f, 0.5);
+      }
+    }
+  }
+  

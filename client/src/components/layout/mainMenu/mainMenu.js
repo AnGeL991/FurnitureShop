@@ -3,29 +3,30 @@ import styles from "./mainMenu.module.scss";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket, faSearch } from "@fortawesome/free-solid-svg-icons";
+import Logo from '../../common/logo/logo';
 
 const MainMenu = () => (
   <header id="Menu" className={styles.mainMenu}>
     <nav>
-    <div className={styles.navMidle}><img src='/image/logo.jpg' alt="logoCompany"/></div>
+    <div className={styles.navMidle}><Logo/></div>
       <ul className={styles.navLeft}>
         <li>
-          <NavLink to="/pracownia">pracownia</NavLink>
+          <NavLink to="/workshop">pracownia</NavLink>
         </li>
         <li>
-          <NavLink to="/oferta">oferta</NavLink>
+          <NavLink to="/offer">oferta</NavLink>
         </li>
         <li>
-          <NavLink to="/sklep">sklep</NavLink>
+          <NavLink to="/shop">sklep</NavLink>
         </li>
         <li>
-          <NavLink to="/Realizacja">realizacja</NavLink>
+          <NavLink to="/realization">realizacja</NavLink>
         </li>
         <li>
-          <NavLink to="/Blog">blog</NavLink>
+          <NavLink to="/blog">blog</NavLink>
         </li>
         <li>
-          <NavLink to="/Kontakt">kontakt</NavLink>
+          <NavLink to="/contact">kontakt</NavLink>
         </li>
       </ul>
       
