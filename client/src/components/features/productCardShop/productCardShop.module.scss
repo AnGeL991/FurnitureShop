@@ -43,6 +43,19 @@
         .toolbarRight {
             grid-area: 1 / 2 / 2 / 3;
 
+            .vievToogle{
+                margin-left:40px;
+                display: inline-block;
+                .icon{
+                    margin-left:10px;
+                    font-size: 20px;
+                    transition: 0.2s linear all;
+                    cursor: pointer;
+                   &:hover{
+                       color:#b74334 ;
+                   }
+                }
+            }
             .showList {
                 border: 1px solid #9d9d9d;
                 z-index: 99999;
@@ -86,37 +99,37 @@
                 }
             }
 
-            &:hover .showList {
-                opacity: 1;
-                transform: translateY(0%);
-                visibility: unset;
-            }
+           
 
             .ordering {
+                display: inline-block;
                 position: relative;
-                margin-left: 130px;
+                margin-left: 30px;
                 text-align: center;
                 width: 40%;
                 padding: 10px;
                 margin-top: 10px;
                 border: 1px solid #9d9d9d;
                 transition: 5s linear all;
-
+                &:hover {
+                    .showList {
+                    opacity: 1;
+                    transform: translateY(0%);
+                    visibility: unset;
+                }
+                .arrowIcon {
+                    transform: rotate(180deg) translateY(-20%);
+                }
+            }
                 p {
                     margin: 0;
                 }
 
-                .icon {
+                .arrowIcon {
                     width: 1.625em;
                     vertical-align: none;
                     transform: translateY(-10%);
 
-                }
-
-                &:hover {
-                    .icon {
-                        transform: rotate(180deg) translateY(-20%);
-                    }
                 }
             }
         }

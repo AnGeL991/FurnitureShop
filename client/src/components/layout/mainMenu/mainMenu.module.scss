@@ -67,9 +67,8 @@ li,
   right: 0;
   transform: translateY(-25%);
   width: 30%;
-  text-align: center;
   .basket{
-  margin-right: 10%;
+  margin: 0 20px 0 80px;
   position: relative;
   .basketQuantity{
     text-align: center;
@@ -86,23 +85,36 @@ li,
   }
   }
   .searchBox{
-    
     input {
-      width: 80%;
+      position: relative;
+      width: 0%;
       border:1px solid gray;
       background-color: transparent;
       padding: 5px;
       border-radius: 24px;
       outline: none;
-      transition:0.1s linear all;
+      visibility: hidden;
+      transition: 1s linear all;
+      &:focus{
+        visibility: unset;
+        width: 80%;
+      }
     }
     .btnSubmit{
       border:none;
       background-color: transparent;
+     
     }
-    .hiden{
-      display: none;
+    .hidden{
+      display: inline-block;
     }
+    &:hover {
+      input{
+     visibility:unset;
+     width: 80%;
+    }
+
+  }
   }
 }
 .icon{

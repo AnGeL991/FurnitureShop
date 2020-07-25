@@ -1,9 +1,8 @@
 import React from 'react';
 import styles from './productCardShop.module.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faSortDown } from "@fortawesome/free-solid-svg-icons";
-import ProductBox from '../../features/productBox/productBox';
-
+import {faSortDown,faTh,faList } from "@fortawesome/free-solid-svg-icons";
+import HorizontalProductBox from '../horizontalProductBox/horizontalProductBox'
 const ProductCardShop = ()=>{
 
     return(
@@ -23,12 +22,16 @@ const ProductCardShop = ()=>{
             </div>
           </div>
           <div className={styles.toolbarRight}>
+            <div className={styles.vievToogle}>
+            <FontAwesomeIcon icon={faTh} className={styles.icon}/>
+            <FontAwesomeIcon icon={faList} className={styles.icon}/>
+            </div>
             <div className={styles.ordering}>
               <p>
                 sortuj
                 <FontAwesomeIcon
                   icon={faSortDown}
-                  className={styles.icon}
+                  className={styles.arrowIcon}
                 />
               </p>
               <ul className={styles.showList}>
@@ -42,18 +45,9 @@ const ProductCardShop = ()=>{
           </div>
         </div>
         <div className={styles.productCard}>
-<ProductBox/>
-<ProductBox/>
-<ProductBox/>
-<ProductBox/>
-<ProductBox/>
-<ProductBox/>
-<ProductBox/>
-<ProductBox/>
-<ProductBox/>
-<ProductBox/>
-<ProductBox/>
-<ProductBox/>
+        <HorizontalProductBox/>
+        <HorizontalProductBox/>
+        <HorizontalProductBox/>
         </div>
       </section>
     )
