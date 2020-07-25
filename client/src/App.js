@@ -14,11 +14,11 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/workshop" component={WorkShop} />
-        <Route exact path="/offer" component={Shop} />
         <Route exact path="/shop" component={Shop} />
         <Route exact path="/realization" component={Home} />
         <Route exact path="/blog" component={Home} />
         <Route exact path="/contact" component={Home} />
+        <Route exact path="/account" component={Shop} />
         <Route exact component={PageNoFound} />
       </Switch>
     </MainLayout>

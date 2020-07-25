@@ -14,9 +14,6 @@ const MainMenu = () => (
           <NavLink to="/workshop">pracownia</NavLink>
         </li>
         <li>
-          <NavLink to="/offer">oferta</NavLink>
-        </li>
-        <li>
           <NavLink to="/shop">sklep</NavLink>
         </li>
         <li>
@@ -27,6 +24,9 @@ const MainMenu = () => (
         </li>
         <li>
           <NavLink to="/contact">kontakt</NavLink>
+        </li>
+        <li>
+          <NavLink to="/account">Moje konto</NavLink>
         </li>
       </ul>
       
