@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./productCard.module.scss";
 import ProductBox from "../productBox/productBox";
 import ProductNav from '../../common/productNav/productNav';
+import PublicitySlider from "../publicitySlider/publicitySlider";
 
 const ProductCard = () => {
   return (
@@ -11,10 +12,8 @@ const ProductCard = () => {
 <ProductNav/>
 <div className={styles.productSection}>
   <div className={styles.publicity}>
-    <div className={styles.banner}>
-      <ProductBox width="100%" />
-      <ProductBox width="100%" />
-    </div>
+    <PublicitySlider amount='1' radius='none' shadow='yes'/>
+    <PublicitySlider amount='1' radius='none' shadow='yes'/>
   </div>
   <div className={styles.productCard}>
     <ProductBox />
