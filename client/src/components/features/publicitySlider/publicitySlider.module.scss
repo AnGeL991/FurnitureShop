@@ -1,0 +1,28 @@
+@import '../../../styles/settings.scss';
+
+.contentBox {
+    position: relative;
+    overflow: hidden;
+    .wrapper {
+        width: 1000vh;
+        padding: 20px 0;
+        
+    }
+    .arrow{
+        display: none;
+        z-index: 1;
+        position: absolute;
+        top:0;
+        bottom:0;
+        width:50px;
+        box-shadow: inset 10px 2px 300px 0px rgba(0,0,0,0.6);
+    }
+    .arrow:first-of-type{
+        right:0;
+    }
+    &:hover {
+        .arrow {
+            display:block;
+        }
+    }
+}

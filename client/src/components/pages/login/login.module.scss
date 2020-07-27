@@ -1,0 +1,65 @@
+@import '../../../styles/settings.scss';
+
+.page {
+    margin-top: 130px;
+}
+
+.contentBox {
+    margin:50px 0 ;
+    
+    display: grid;
+    grid-template-columns: 0.6fr 1fr;
+    grid-template-rows: 1fr;
+    font-family: $font-family;
+}
+
+.accontForm {
+    margin-left:100px;
+    grid-area: 1 / 1 / 2 / 2;
+    .accountTitle{
+        font-size: 34px;
+        font-weight: 500;
+    }
+    .accountWrapper{
+        label{
+            font-weight: 400;
+            display: block;
+            font-size: 16px;
+            
+        }
+        input{
+            margin-top:5px;
+            width: 90%;
+            padding:10px;
+        }
+        .checked{
+            width: 15px;
+            margin-right: 10px;
+        }
+        .submitBtn{
+            margin-top:10px;
+            padding:10px;
+            color:gray;
+            width: 30%;
+        }
+        
+    }
+    .lostPassoword{
+        .lostLink{
+            color:gray;
+            transition: 0.2s linear all;
+            &:hover{
+                color:#b74334;
+            }
+        }
+    }
+    .required{
+        color:red;
+    }
+}
+.publicity {
+    grid-area: 1 / 2 / 2 / 3;
+    overflow: hidden;
+    box-shadow: inset -27px -11px 300px -19px rgba(0, 0, 0, 0.75);
+    border-radius: 24px;
+}
