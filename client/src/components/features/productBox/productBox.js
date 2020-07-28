@@ -19,7 +19,7 @@ const ProductBox = ({ width, id, title, price, image }) => {
           <FontAwesomeIcon icon={faSearch} className={styles.icon} />
         </div>
 
-        <img src={image} alt='product' />
+        <img src={image} alt="product" />
       </div>
       <div className={styles.textBox}>
         <h3 className={styles.productTitle}>{title}</h3>
