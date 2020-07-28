@@ -10,7 +10,7 @@ const Login =()=>{
            <Header
           fontSize="34px"
           textAlign="left"
-          fontWeight="500"
+          fontWeight="300"
           margin="20px 140px "
         >
           moje konto
@@ -45,7 +45,7 @@ const Login =()=>{
                 </form>
                 </section>
                <div className={styles.publicity}>
-               <PublicitySlider />
+               <PublicitySlider radius="none" />
                </div>
                 </div>
             </Container>

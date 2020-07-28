@@ -46,7 +46,7 @@ class Contact extends React.Component {
         <Header
           fontSize="34px"
           textAlign="left"
-          fontWeight="500"
+          fontWeight="300"
           margin="20px 140px "
         >
           kontakt
