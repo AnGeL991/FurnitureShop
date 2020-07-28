@@ -1,0 +1,78 @@
+@import '../../../styles/settings.scss';
+
+.eachPost {
+    border: 0.5px solid #d9d9d9;
+    margin: 20px 0;
+    .wrapper {
+        display: grid;
+        grid-template-columns: 0.8fr 1fr;
+        grid-template-rows: 1fr;
+        padding: 20px;
+    }
+
+    .imageBox {
+        grid-area: 1 / 1 / 2 / 2;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .description {
+        grid-area: 1 / 2 / 2 / 3;
+        margin-left: 40px;
+        color: #343538;
+        position: relative;
+    }
+
+    .blogTitle {
+        font-weight: 400;
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .blogText {
+        font-weight: 300;
+        letter-spacing: 1px;
+        line-height: 1.2;
+    }
+
+    .blogButton {
+        padding: 20px;
+        border: 0.5px solid black;
+        background-color: transparent;
+        transition: 0.2s linear all;
+        position: absolute;
+        right: 0px;
+
+        a {
+            color: black;
+        }
+
+        &:hover {
+            background-color: #b74334;
+
+            a {
+                color: white;
+            }
+        }
+    }
+
+    .dateBax {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        .icon {
+            font-weight: 18px;
+            color: #343538;
+            margin-right: 5px;
+        }
+    }
+
+    &:hover {
+        box-shadow: 10px 10px 30px 0px rgba(0, 0, 0, 0.75)
+    }
+}

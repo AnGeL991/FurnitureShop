@@ -2,6 +2,9 @@ import React from 'react';
 import styles from './blog.module.scss';
 import Container from '../../layout/container/container';
 import Header from '../../common/headerTitle/header';
+import Post from '../../features/post/post';
+
+
 
 const Blog =()=>{
 
@@ -17,15 +20,15 @@ const Blog =()=>{
         </Header>
             <Container>
            <section id="sectionPosts" className={styles.posts}>
-               sectionPost
-               <div className={styles.eachPost}>
-                   post
-               </div>
+               <Post/>
+               <Post/>
+               
            </section>
             </Container>
 
         </div>
     )
 }
+
 
 export default Blog;
