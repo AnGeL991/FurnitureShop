@@ -1,0 +1,146 @@
+@import '../../../styles/settings.scss';
+
+.contentBox{
+    max-width: 1220px;
+    margin:0 auto;
+    margin-bottom: 400px;
+    margin-top:50px;
+    font-family: $font-family;
+}
+.wrapper{
+    padding:15px;
+}
+.shopTable{
+    width: 100%;
+    border:none;
+    font-weight: 300;
+    thead{
+        text-transform: uppercase;
+    }
+    .headTable{
+        font-weight: 200;
+    }
+    
+}
+.productRemove,.productThumbnail,.productName,.productPrice,.productQuantity,.productSubtotal,.cartItem{
+    border-bottom: 0.5px solid #d9d9d9;
+    padding:15px;
+    text-align: left;
+    font-weight: 400;
+}
+
+.productRemove{
+    padding:5px;
+    width: 1%;
+}
+.productThumbnail{
+    width: 1%;
+   img { width: 70px;
+    height: 70px;}
+}
+.productQuantity{
+    width: 1px;
+ 
+    .quality{
+        display: inline-block;
+        width: 50%;
+    }
+    
+    .inputAmount{
+        box-shadow: inset 10px 2px 300px -66px rgba(0,0,0,0.5);
+        width: 50px;
+        border:none;
+        padding:10px 20px;
+    }
+}
+.productSubtotal{
+    text-align: center;
+}
+.couponSection{
+    position: relative;
+    .btnSubmit{
+        position: absolute;
+        top:50%;
+        right: 0;
+        transform: translateY(-50%);
+        padding:11px 16px;
+        background-color: #343538;
+        text-transform: uppercase;
+        color:white;
+        cursor: pointer;
+        &:hover{
+            background-color: #b74334;
+        }
+    }
+}
+
+.coupon{
+    padding:15px 0;
+    display: inline-block;
+    .inputText {
+     padding: 10px 15px;
+ }
+ .couponSubmit{
+    margin-left:5px;
+    padding:11px 16px;
+    background-color: #343538;
+    border:0.5px solid gray;
+    color:white;
+    cursor: pointer;
+    &:hover{
+        background-color: #b74334;
+    }
+ }
+
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+.wrapperTotalPrice{
+  
+    position: relative;
+}
+.totalSection{
+    font-size: 18px;
+    position: absolute;
+    right: 0;
+    font-weight: 400;
+    margin-bottom: 50px;
+    padding:10px;
+    text-align: right;
+    .priceAmount,.shippingPrice,.totalPaymount{
+        font-size: 24px;
+    }
+    th{
+        font-weight: 400;
+    }
+    .shipping{
+        li{
+            padding:10px 0;
+            display: block;
+        }
+        label{
+            margin-left: 5px;
+        }
+    }   
+}
+.prepareToCheckout{
+    padding:15px 0;
+    .checkout{
+        padding:15px;
+        width: 80%;
+        background-color: #b74334;
+        border:0.5px solid gray;
+        color:white;
+        cursor: pointer;
+        &:hover {
+            background-color:#343538;
+
+        }
+    }
+}

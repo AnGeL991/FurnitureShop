@@ -31,9 +31,10 @@ const MainMenu = () => (
       </ul>
       
       <div className={styles.navRight}>
-        <div className={styles.basket}>
-          <FontAwesomeIcon icon={faShoppingBasket} className={styles.icon} />
+        <div className={styles.basket}><NavLink to="/order">
+        <FontAwesomeIcon icon={faShoppingBasket} className={styles.icon} />
           <span className={styles.basketQuantity}>0</span>
+        </NavLink>
         </div>
         <div className={styles.searchBox}>
           <form className={styles.formSearch} action="search" method="get">
