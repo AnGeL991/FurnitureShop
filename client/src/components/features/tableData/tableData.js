@@ -3,6 +3,40 @@ import styles from './tableData.module.scss';
 import {NavLink} from 'react-router-dom';
 
 class TableData extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      orders: [
+        {
+          id: 1,
+          image:
+            "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80",
+          name: "product name",
+          price: "1800",
+          amount: 1,
+          subtotal: "1800",
+        },
+        {
+          id: 1,
+          image:
+            "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80",
+          name: "product name",
+          price: "1800",
+          amount: 1,
+          subtotal: "1800",
+        },
+        {
+          id: 1,
+          image:
+            "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80",
+          name: "product name",
+          price: "1800",
+          amount: 1,
+          subtotal: "1800",
+        },
+      ],
+    };
+  }
       removeOrder(element) {
         let id = element
         console.log(element);
