@@ -1,51 +1,33 @@
-import { API_URL } from "../config";
 import axios from "axios";
-/* Selectors */
-export const getAllProducts = ({ products }) => products.data;
-export const getRequest = ({ products }) => products.request;
-export const getFilteredProducts = ({ products, filters }) => {
-  let output = products;
+import { API_URL } from "../config";
 
-  //filter by searchPhrase
-  if (filters.searchPhrase) {
-    const pattern = new ReqExp(filters.searchPhrase, "i");
-    output = output.filter((product) => pattern.test(product.name));
-  }
+export const getCategory = ({ category }) => category.data;
+export const getRequest = ({ category }) => category.request;
 
-  return output.reverse();
-};
-export const getProductById = ({ products }, productId) => {
-  const filtered = products.filter(function (product) {
-    return (product.id = productID);
-  });
-  console.log("filtering prodducts by productId:", productId, filtered);
-  return filtered.length ? filtered[0] : { error: true };
-};
-
-const reducerName = "product";
+const reducerName = "order";
 const createActionName = (name) => `app/${reducerName}/${name}`;
 
 const START_REQUEST = createActionName("START_REQUEST");
 const END_REQUEST = createActionName("END_REQUEST");
 const ERROR_REQUEST = createActionName("ERROR_REQUEST");
 
-const LOAD_PRODUCT = createActionName("LOAD_PRODUCT");
+const LOAD_CATEGORY = createActionName("LOAD_CATEGORY");
 
 export const startRequest = () => ({ type: START_REQUEST });
 export const endRequest = () => ({ type: END_REQUEST });
 export const errorRequest = (error) => ({ error, type: ERROR_REQUEST });
 
-export const loadProduct = (payload) => ({
+export const LoadCategory = (payload) => ({
   payload,
-  type: LOAD_PRODUCT,
+  type: LOAD_CATEGORY,
 });
 
-export const loadProductRequest = () => {
+export const loadCategoryRequest = () => {
   return async (dispatch) => {
     dispatch(startRequest());
     try {
-      let res = await axios.get(`${API_URL}/product`);
-      dispatch(loadProduct(res.data));
+      let res = await axios.get(`${API_URL}/category`);
+      dispatch(LoadCategory(res.data));
       dispatch(endRequest());
     } catch (e) {
       dispatch(errorRequest(e.message));
@@ -61,10 +43,14 @@ const initialState = {
     success: null,
   },
 };
+
 export default function reducer(statePart = initialState, action = {}) {
   switch (action.type) {
-    case LOAD_PRODUCT:
-      return { ...statePart, data: [...action.payload] };
+    case LOAD_CATEGORY:
+      return {
+        ...statePart,
+        data: [...action.payload],
+      };
     case START_REQUEST:
       return {
         ...statePart,

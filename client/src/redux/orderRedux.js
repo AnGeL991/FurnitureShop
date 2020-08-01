@@ -1,13 +1,12 @@
 import axios from "axios";
 import { API_URL } from "../config";
-import { faSmileBeam } from "@fortawesome/free-solid-svg-icons";
 
 // selectors
 export const getOrder = ({ orderProduct }) => orderProduct.data;
 export const getRequest = ({ orderRequest }) => orderRequest.request;
 
 // action name creator
-const reducerName = "order";
+const reducerName = "orders";
 const createActionName = (name) => `api/${reducerName}/${name}`;
 const START_REQUEST = createActionName("START_REQUEST");
 const END_REQUEST = createActionName("END_REQUEST");
@@ -18,7 +17,7 @@ const ADD_PRODUCT = createActionName("ADD_PRODUCT");
 
 export const startRequest = () => ({ type: START_REQUEST });
 export const endRequest = () => ({ type: END_REQUEST });
-export const errorRequest = () => ({ error, type: ERROR_REQUEST });
+export const errorRequest = error => ({ error, type: ERROR_REQUEST });
 
 export const loadOrders = (payload) => ({
   payload,
@@ -46,7 +45,7 @@ export const addProductRequest = (order) => {
   return async (dispatch) => {
     dispatch(startRequest({ name: "ADD_PRODUCT" }));
     try {
-      let res = await axios.post(`${API_URL}/order`, order);
+      let res = await axios.post(`${API_URL}/orders`, order);
       dispatch(addProduct(res));
       dispatch(endRequest({ name: "ADD_PRODUCT" }));
     } catch (e) {
