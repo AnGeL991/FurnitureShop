@@ -1,7 +1,14 @@
 import {combineReducers,createStore,applyMiddleware,compose} from 'redux';
 import thunk from 'redux-thunk';
 
-// add black reducers for initial state properies without reducers
+// import reducers
+import orderProduct from './orderRedux';
+import category from './categoryRedux';
+
+const reducers ={
+    orderProduct,
+    category,
+}
 
 const combinedReducers = combineReducers(reducers);
 
