@@ -10,7 +10,7 @@ const Post = ({_id,image,title,date,description}) => {
     <div className={styles.eachPost} id={_id}>
       <div className={styles.wrapper}>
         <div className={styles.imageBox}>
-          <img src={image} />
+          <img src={image} alt="product in basket" />
         </div>
         <div className={styles.description}>
           <h4 className={styles.blogTitle}>{title}</h4>

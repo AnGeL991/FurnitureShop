@@ -6,7 +6,7 @@ import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import Header from '../../common/headerTitle/header';
 
 const Footer = () => (
-  <section className={styles.footer}>
+  <footer className={styles.footer}>
     <div className={styles.topBorder}>
       <Header border='none' fontWeight='400'>Jarosław Zaremba</Header>
     </div>
@@ -61,7 +61,7 @@ const Footer = () => (
     <div className={styles.bottomBorder}>
       <span>@2020 M-Tbis-Bis</span>
     </div>
-  </section>
+  </footer>
 );
 
 export default Footer;

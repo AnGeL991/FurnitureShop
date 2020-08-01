@@ -1,9 +1,13 @@
 const settings = {
     db: {
-      url: '//' + window.location.hostname + (window.location.hostname=='localhost' ? ':3131' : ''),
+    API_URL: (process.env.NODE_ENV === 'production') ? '/api' : 'http://localhost:3000/api',
       endpoint: {
         orders: 'orders',
       },
+    },
+    hours: {
+      open:10,
+      close:22,
     },
   };
     

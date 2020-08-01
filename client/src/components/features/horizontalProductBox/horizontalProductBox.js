@@ -4,7 +4,11 @@ import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch,faCartPlus } from "@fortawesome/free-solid-svg-icons";
 
-const HorizontalProductBox = ({ id, image, title, price }) => {
+
+
+const HorizontalProductBox = ({ id, image, title, price,submit }) => {
+  
+
   return (
     <div className={styles.horizontalProductBox} id={id}>
       <div className={styles.img}>
@@ -17,11 +21,10 @@ const HorizontalProductBox = ({ id, image, title, price }) => {
         Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w.
         </p>
         <div className={styles.buttonBox}>
-        <FontAwesomeIcon icon={faCartPlus} className={styles.buttonIcon}/>
+        <FontAwesomeIcon icon={faCartPlus} className={styles.buttonIcon} onClick={() => submit({ id, image, title, price})}/>
         <FontAwesomeIcon icon={faSearch} className={styles.buttonIcon}/>
       </div>
       </div>
-      
     </div>
   );
 };
@@ -31,6 +34,7 @@ HorizontalProductBox.propTypes = {
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
+  submit:PropTypes.func,
 };
 HorizontalProductBox.defaultProps = {
   id: "123",
@@ -39,4 +43,5 @@ HorizontalProductBox.defaultProps = {
   title: "Sofa rozkładana biała",
   price: " 1500 zł - 2000",
 };
+
 export default HorizontalProductBox;
