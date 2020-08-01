@@ -1,29 +1,5 @@
-import {combineReducers,createStore} from 'redux';
-import ProductList from '../db/product.json';
-
-
-
-const initialState ={
-    product: ProductList,
-    filters: {
-        searchPhrase:' ',
-        price: {
-            from:100,
-            to:9999,
-        },
-    },
-    order:{
-        product:null,
-        title: '',
-        price: '',
-        options:{},
-    },
-
-}
-// define reducers
-const reducers ={
-    initialState
-}
+import {combineReducers,createStore,applyMiddleware,compose} from 'redux';
+import thunk from 'redux-thunk';
 
 // add black reducers for initial state properies without reducers
 Object.keys(initialState).forEach(item => {
@@ -37,6 +13,9 @@ const combinedReducers = combineReducers(reducers);
 // create store
 const store = createStore(
     combinedReducers,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    compose(
+        applyMiddleware(thunk),
+        window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
+    )
 );
 export default store;

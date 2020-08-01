@@ -1,10 +1,35 @@
-import React from 'react';
+import React,{Component} from 'react';
 import styles from './productCardShop.module.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faSortDown,faTh,faList } from "@fortawesome/free-solid-svg-icons";
 import HorizontalProductBox from '../horizontalProductBox/horizontalProductBox'
-const ProductCardShop = ()=>{
+import settings from '../../../db/settings';
 
+class ProductCardShop extends Component {
+
+  handleAddProduct(product) {
+    const payload = {
+      product,
+    }
+    console.log(payload);
+    const url = settings.db.API_URL+'/'+ settings.db.endpoint.orders;
+    const fetchOptions = {
+      cache: 'no-cache',
+      method:'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body:JSON.stringify(payload),
+    };
+    fetch(url,fetchOptions)
+    .then(function(response){
+      return response.json();
+    }).then(function(parsedResponse){
+      console.log('parsedResponse', parsedResponse)
+    })
+  }
+
+  render(){
     return(
         <section className={styles.contentBox}>
         <div className={styles.toolbar}>
@@ -13,7 +38,7 @@ const ProductCardShop = ()=>{
               Wyświetlanie 1-12 z 99 wyników
             </p>
             <div className={styles.vievCount}>
-              <p> pokaż</p>
+              <p > pokaż</p>
               <ul>
                 <li className={styles.amount}>15</li>
                 <li className={styles.amount}>30</li>
@@ -45,12 +70,13 @@ const ProductCardShop = ()=>{
           </div>
         </div>
         <div className={styles.productCard}>
-        <HorizontalProductBox/>
-        <HorizontalProductBox/>
-        <HorizontalProductBox/>
+        <HorizontalProductBox submit={this.handleAddProduct.bind(this)}/>
+        <HorizontalProductBox submit={this.handleAddProduct.bind(this)}/>
+        <HorizontalProductBox submit={this.handleAddProduct.bind(this)}/>
         </div>
       </section>
     )
+  }
 };
 
 export default ProductCardShop;

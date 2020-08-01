@@ -10,6 +10,8 @@ import Shop from "./components/pages/shop/shop";
 import Contact from "./components/pages/contact/contact";
 import Login from "./components/pages/login/login";
 import Blog from "./components/pages/blog/blog";
+import Order from './components/pages/order/order';
+import Payments from "./components/pages/payments/payments";
 
 const App = () => {
   return (
@@ -22,6 +24,8 @@ const App = () => {
         <Route exact path="/blog" component={Blog} />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/account" component={Login} />
+        <Route exact path='/order' component={Order}/>
+        <Route exact path='/payments' component={Payments}/>
         <Route exact component={PageNoFound} />
       </Switch>
     </MainLayout>
