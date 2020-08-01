@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faSortDown,faTh,faList } from "@fortawesome/free-solid-svg-icons";
 import HorizontalProductBox from '../horizontalProductBox/horizontalProductBox'
 import settings from '../../../db/settings';
+import { addProductRequest } from '../../../redux/orderRedux';
 
 class ProductCardShop extends Component {
 
@@ -11,6 +12,7 @@ class ProductCardShop extends Component {
     const payload = {
       product,
     }
+   
     console.log(payload);
     const url = settings.db.API_URL+'/'+ settings.db.endpoint.orders;
     const fetchOptions = {
@@ -28,7 +30,7 @@ class ProductCardShop extends Component {
       console.log('parsedResponse', parsedResponse)
     })
   }
-
+  
   render(){
     return(
         <section className={styles.contentBox}>
