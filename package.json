@@ -1,5 +1,19 @@
 {
+  "name": "m_tibis_bis",
+  "version": "1.0.0",
+  "description": "in working",
+  "main": "index.js",
+  "repository": "https://github.com/AnGeL991/Final-Project.git",
+  "author": "Adrian Markuszewski <adrian991999@wp.pl>",
+  "license": "MIT",
   "dependencies": {
-    "redux": "^4.0.5"
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.27",
+    "nodemon": "^2.0.4"
+  },
+  "scripts": {
+    "start": "nodemon server.js",
+    "build": "cd client && yarn install && yarn build"
   }
 }
