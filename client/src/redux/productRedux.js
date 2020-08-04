@@ -1,28 +1,29 @@
 import { API_URL } from "../config";
 import axios from "axios";
+
 /* Selectors */
-export const getAllProducts = ({ products }) => products.data;
-export const getRequest = ({ products }) => products.request;
-export const getFilteredProducts = ({ products, filters }) => {
-  let output = products;
+export const getAllProducts = ({ product }) => product.data;
+export const getRequest = ({ product  }) => product.request;
+// export const getFilteredProducts = ({ products, filters }) => {
+//   let output = products;
 
-  //filter by searchPhrase
-  if (filters.searchPhrase) {
-    const pattern = new ReqExp(filters.searchPhrase, "i");
-    output = output.filter((product) => pattern.test(product.name));
-  }
+//   //filter by searchPhrase
+//   if (filters.searchPhrase) {
+//     const pattern = new ReqExp(filters.searchPhrase, "i");
+//     output = output.filter((product) => pattern.test(product.name));
+//   }
 
-  return output.reverse();
-};
-export const getProductById = ({ products }, productId) => {
-  const filtered = products.filter(function (product) {
-    return (product.id = productID);
-  });
-  console.log("filtering prodducts by productId:", productId, filtered);
-  return filtered.length ? filtered[0] : { error: true };
-};
+//   return output.reverse();
+// };
+// export const getProductById = ({ products }, productId) => {
+//   const filtered = products.filter(function (product) {
+//     return (product.id = productID);
+//   });
+//   console.log("filtering prodducts by productId:", productId, filtered);
+//   return filtered.length ? filtered[0] : { error: true };
+// };
 
-const reducerName = "product";
+const reducerName = "products";
 const createActionName = (name) => `app/${reducerName}/${name}`;
 
 const START_REQUEST = createActionName("START_REQUEST");
@@ -44,7 +45,7 @@ export const loadProductRequest = () => {
   return async (dispatch) => {
     dispatch(startRequest());
     try {
-      let res = await axios.get(`${API_URL}/product`);
+      let res = await axios.get(`${API_URL}/products`);
       dispatch(loadProduct(res.data));
       dispatch(endRequest());
     } catch (e) {

@@ -2,7 +2,7 @@ const settings = {
     db: {
     API_URL: (process.env.NODE_ENV === 'production') ? '/api' : 'http://localhost:3000/api',
       endpoint: {
-        orders: 'orders',
+        orders: 'order',
       },
     },
     hours: {

@@ -3,7 +3,7 @@ import { API_URL } from "../config";
 
 // selectors
 export const getOrder = ({ orderProduct }) => orderProduct.data;
-export const getRequest = ({ orderRequest }) => orderRequest.request;
+export const getRequestProduct = ({ orderRequest }) => orderRequest.request;
 
 // action name creator
 const reducerName = "orders";
@@ -45,7 +45,7 @@ export const addProductRequest = (order) => {
   return async (dispatch) => {
     dispatch(startRequest({ name: "ADD_PRODUCT" }));
     try {
-      let res = await axios.post(`${API_URL}/orders`, order);
+      let res = await axios.post(`${API_URL}/order`, order);
       dispatch(addProduct(res));
       dispatch(endRequest({ name: "ADD_PRODUCT" }));
     } catch (e) {

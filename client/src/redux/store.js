@@ -4,10 +4,13 @@ import thunk from 'redux-thunk';
 // import reducers
 import orderProduct from './orderRedux';
 import category from './categoryRedux';
+import product from './productRedux';
 
 const reducers ={
+    product,
     orderProduct,
     category,
+   
 }
 
 const combinedReducers = combineReducers(reducers);
