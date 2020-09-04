@@ -13,10 +13,10 @@ exports.getAll = async(req,res)=> {
 exports.postOne = async(req,res)=> {
     try{
         const{
-            _id,product
+            idClienta,title,price,image
         } = req.body;
         const newOrder = new OrderProduct({
-            _id,product
+            idClienta,title,price,image
         });
         await newOrder.save();
         res.json({
