@@ -3,9 +3,9 @@ import { css, jsx } from "@emotion/core";
 import styles from "./productBox.module.scss";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch,faCartPlus } from "@fortawesome/free-solid-svg-icons";
 
-const ProductBox = ({ width, id, title, price, image }) => {
+const ProductBox = ({ width, id, title, price, image,submit }) => {
   return (
     <div
       className={styles.productBox}
@@ -17,6 +17,10 @@ const ProductBox = ({ width, id, title, price, image }) => {
       <div className={styles.img}>
         <div className={styles.circleBox}>
           <FontAwesomeIcon icon={faSearch} className={styles.icon} />
+        </div>
+        <div className={styles.circleBox}>
+          <FontAwesomeIcon icon={faCartPlus} 
+          className={styles.icon} onClick={()=> submit({id,image,title,price})} />
         </div>
 
         <img src={image} alt="product" />
@@ -34,6 +38,7 @@ ProductBox.propTypes = {
   title: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
   width: PropTypes.string.isRequired,
+  submit:PropTypes.func,
 };
 ProductBox.defaultProps = {
   id: "123",

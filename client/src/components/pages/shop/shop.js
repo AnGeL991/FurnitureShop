@@ -3,7 +3,7 @@ import styles from "./shop.module.scss";
 import Header from "../../common/headerTitle/header";
 import Container from "../../layout/container/container";
 import CategoryProduct from '../../features/categoryProduct/categoryProduct';
-import ProductCardShop from "../../features/productCardShop/productCardShop";
+import ProductCardShop from "../../features/productCardShop/productCardShopContainer";
 
 const Shop = () => (
   <section id="shop" className={styles.page}>

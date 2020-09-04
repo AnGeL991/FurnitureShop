@@ -3,7 +3,7 @@ import styles from "./post.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarPlus } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
-import { NavLink } from "react-router-dom";
+import Button from '../../common/button/button';
 
 const Post = ({_id,image,title,date,description}) => {
   return (
@@ -15,9 +15,15 @@ const Post = ({_id,image,title,date,description}) => {
         <div className={styles.description}>
           <h4 className={styles.blogTitle}>{title}</h4>
           <p className={styles.blogText}>{description}</p>
-          <button className={styles.blogButton}>
-            <NavLink to={"/blog/post/" + _id}>Zobacz wiecej</NavLink>
-          </button>
+          <div className={styles.blogButton}>
+          <Button
+           padding="15px"
+           width="150px"
+           link={"/blog/post" +_id}
+           >
+              Zobacz wiecej
+          </Button>
+          </div>
           <div className={styles.dateBax}>
             <FontAwesomeIcon icon={faCalendarPlus} className={styles.icon} />{" "}
             {date}

@@ -40,24 +40,9 @@
     }
 
     .blogButton {
-        padding: 20px;
-        border: 0.5px solid black;
-        background-color: transparent;
-        transition: 0.2s linear all;
         position: absolute;
         right: 0px;
-
-        a {
-            color: black;
-        }
-
-        &:hover {
-            background-color: #b74334;
-
-            a {
-                color: white;
-            }
-        }
+        bottom:0;
     }
 
     .dateBax {

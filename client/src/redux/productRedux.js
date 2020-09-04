@@ -1,28 +1,30 @@
-import { API_URL } from "../config";
 import axios from "axios";
+import { API_URL } from "../config";
+
 /* Selectors */
-export const getAllProducts = ({ products }) => products.data;
-export const getRequest = ({ products }) => products.request;
-export const getFilteredProducts = ({ products, filters }) => {
-  let output = products;
+export const getAllProducts = ({ product }) => product.data;
+export const getRequest = ({ product }) => product.request;
 
-  //filter by searchPhrase
-  if (filters.searchPhrase) {
-    const pattern = new ReqExp(filters.searchPhrase, "i");
-    output = output.filter((product) => pattern.test(product.name));
-  }
+// export const getFilteredProducts = ({ products, filters }) => {
+//   let output = products;
 
-  return output.reverse();
-};
-export const getProductById = ({ products }, productId) => {
-  const filtered = products.filter(function (product) {
-    return (product.id = productID);
-  });
-  console.log("filtering prodducts by productId:", productId, filtered);
-  return filtered.length ? filtered[0] : { error: true };
-};
+//   //filter by searchPhrase
+//   if (filters.searchPhrase) {
+//     const pattern = new ReqExp(filters.searchPhrase, "i");
+//     output = output.filter((product) => pattern.test(product.name));
+//   }
 
-const reducerName = "product";
+//   return output.reverse();
+// };
+// export const getProductById = ({ products }, productId) => {
+//   const filtered = products.filter(function (product) {
+//     return (product.id = productID);
+//   });
+//   console.log("filtering prodducts by productId:", productId, filtered);
+//   return filtered.length ? filtered[0] : { error: true };
+// };
+
+const reducerName = "products";
 const createActionName = (name) => `app/${reducerName}/${name}`;
 
 const START_REQUEST = createActionName("START_REQUEST");
@@ -30,6 +32,7 @@ const END_REQUEST = createActionName("END_REQUEST");
 const ERROR_REQUEST = createActionName("ERROR_REQUEST");
 
 const LOAD_PRODUCT = createActionName("LOAD_PRODUCT");
+const SET_SEARCH_VALUE = createActionName("SET_SEARCH_VALUE");
 
 export const startRequest = () => ({ type: START_REQUEST });
 export const endRequest = () => ({ type: END_REQUEST });
@@ -44,12 +47,22 @@ export const loadProductRequest = () => {
   return async (dispatch) => {
     dispatch(startRequest());
     try {
-      let res = await axios.get(`${API_URL}/product`);
+      let res = await axios.get(`${API_URL}/products`);
       dispatch(loadProduct(res.data));
       dispatch(endRequest());
     } catch (e) {
       dispatch(errorRequest(e.message));
     }
+  };
+};
+
+export const setSearchValues = (type, value) => {
+  return {
+    type: SET_SEARCH_VALUE,
+    payload: {
+      type,
+      value,
+    },
   };
 };
 

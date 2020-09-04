@@ -1,0 +1,19 @@
+@import '../../../styles/settings.scss';
+.button{
+    font-family: $font-family;
+    font-size: 16px;
+    padding:10px;
+    background-color: #b74434;
+    border:none;
+    transition:0.3s linear all;
+    text-transform: uppercase;
+    a {
+        color:white;
+    }
+    &:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+        box-shadow: inset -27px -11px 300px -19px rgba(0, 0, 0, 0.75);
+        background-color: transparent;
+    }
+}

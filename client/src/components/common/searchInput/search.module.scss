@@ -1,0 +1,49 @@
+.searchBox {
+  display: inline-block;
+
+  input {
+    position: relative;
+    width: 0%;
+    border: 1px solid gray;
+    background-color: transparent;
+    padding: 5px;
+    border-radius: 24px;
+    outline: none;
+    visibility: hidden;
+    transition: 1s linear all;
+
+    &:focus {
+      visibility: unset;
+      width: 80%;
+    }
+  }
+
+  .btnSubmit {
+    border: none;
+    background-color: transparent;
+
+  }
+
+  .hidden {
+    display: inline-block;
+  }
+
+  &:hover {
+    input {
+      visibility: unset;
+      width: 80%;
+    }
+
+  }
+}
+
+.icon {
+  font-size: 20px;
+  color: #343538;
+  transition: 0.1s linear all;
+  cursor: pointer;
+
+  &:hover {
+    color: #b74434;
+  }
+}

@@ -10,7 +10,7 @@ const HorizontalProductBox = ({ id, image, title, price,submit }) => {
   
 
   return (
-    <div className={styles.horizontalProductBox} id={id}>
+    <div className={styles.horizontalProductBox}>
       <div className={styles.img}>
         <img src={image} alt="product" />
       </div>
@@ -30,18 +30,16 @@ const HorizontalProductBox = ({ id, image, title, price,submit }) => {
 };
 
 HorizontalProductBox.propTypes = {
-  id: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
   submit:PropTypes.func,
 };
-HorizontalProductBox.defaultProps = {
-  id: "123",
-  image:
-    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80",
-  title: "Sofa rozkładana biała",
-  price: " 1500 zł - 2000",
-};
+// HorizontalProductBox.defaultProps = {
+//   image:
+//     "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80",
+//   title: "Sofa rozkładana biała",
+//   price: " 1500 zł - 2000",
+// };
 
 export default HorizontalProductBox;
