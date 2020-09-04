@@ -61,7 +61,7 @@ class ProductCardShop extends Component {
     const {small} = this.state.category;
     console.log(products);
     if (request.pending) return <div>Pending</div>;
-    else if (request.error) return <div>something is bad</div>;
+    else if (request.error) return <div>something is wrong</div>;
     else if (!request.success)
       return <div>Don't have product on the warehouse</div>;
     else if (request.success)
@@ -117,7 +117,7 @@ class ProductCardShop extends Component {
             </div>
           </div>
           <div className={styles.productCard}>
-          {small == true ?<>
+          {small === true ?<>
             {products.map((el)=>(<ProductBox key={el.id}{...el}
             submit={this.handleAddProduct.bind(this)}/>))}
             </> :(<>{products.map((el) => (
@@ -127,12 +127,6 @@ class ProductCardShop extends Component {
                 submit={this.handleAddProduct.bind(this)}
               />
             ))}</>)}
-            
-            
-            
-            {/* <HorizontalProductBox submit={this.handleAddProduct.bind(this)}/>
-        <HorizontalProductBox submit={this.handleAddProduct.bind(this)}/>
-        <HorizontalProductBox submit={this.handleAddProduct.bind(this)}/> */}
           </div>
         </section>
       );

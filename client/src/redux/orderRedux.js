@@ -3,10 +3,11 @@ import { API_URL } from "../config";
 
 // selectors
 export const getOrder = ({ orderProduct }) => orderProduct.data;
-export const getRequestProduct = ({ orderRequest }) => orderRequest.request;
+export const getRequest = ({ orderProduct }) => orderProduct.request;
+export const getOrderLenght = ({ orderProduct }) => orderProduct.data.lenght;
 
 // action name creator
-const reducerName = "orders";
+const reducerName = "order";
 const createActionName = (name) => `api/${reducerName}/${name}`;
 const START_REQUEST = createActionName("START_REQUEST");
 const END_REQUEST = createActionName("END_REQUEST");
@@ -14,10 +15,13 @@ const ERROR_REQUEST = createActionName("ERROR_REQUEST");
 
 const LOAD_ORDERS = createActionName("LOAD_ORDERS");
 const ADD_PRODUCT = createActionName("ADD_PRODUCT");
+const SHOW_LOADING = createActionName("SHOW_LOADING");
+const HIDE_LOADING = createActionName("HIDE_LOADING");
+const REMOVE_CART_ITEM = createActionName("REMOVE_CART_ITEM");
 
 export const startRequest = () => ({ type: START_REQUEST });
 export const endRequest = () => ({ type: END_REQUEST });
-export const errorRequest = error => ({ error, type: ERROR_REQUEST });
+export const errorRequest = (error) => ({ error, type: ERROR_REQUEST });
 
 export const loadOrders = (payload) => ({
   payload,
@@ -27,12 +31,16 @@ export const addProduct = (payload) => ({
   payload,
   type: ADD_PRODUCT,
 });
+export const removeProduct = (payload) => ({
+  payload,
+  type: REMOVE_CART_ITEM,
+});
 
 export const loadOrderRequest = () => {
   return async (dispatch) => {
     dispatch(startRequest());
     try {
-      let res = await axios.get(`${API_URL}/orders`);
+      let res = await axios.get(`${API_URL}/order`);
       dispatch(loadOrders(res.data));
       dispatch(endRequest());
     } catch (e) {
@@ -53,6 +61,22 @@ export const addProductRequest = (order) => {
     }
   };
 };
+
+export const removeCartItem = (itemId, orderBox, size = "") => (dispatch) => {
+  dispatch({ type: SHOW_LOADING, payload: 1000 });
+  setTimeout(() => {
+    dispatch({
+      type: REMOVE_CART_ITEM,
+      payload: {
+        itemId,
+        size,
+        orderBox,
+      },
+    });
+    dispatch({ type: HIDE_LOADING });
+  }, 1000);
+};
+
 
 const initialState = {
   data: [],

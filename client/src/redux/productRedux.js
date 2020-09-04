@@ -1,9 +1,10 @@
-import { API_URL } from "../config";
 import axios from "axios";
+import { API_URL } from "../config";
 
 /* Selectors */
 export const getAllProducts = ({ product }) => product.data;
-export const getRequest = ({ product  }) => product.request;
+export const getRequest = ({ product }) => product.request;
+
 // export const getFilteredProducts = ({ products, filters }) => {
 //   let output = products;
 
@@ -31,6 +32,7 @@ const END_REQUEST = createActionName("END_REQUEST");
 const ERROR_REQUEST = createActionName("ERROR_REQUEST");
 
 const LOAD_PRODUCT = createActionName("LOAD_PRODUCT");
+const SET_SEARCH_VALUE = createActionName("SET_SEARCH_VALUE");
 
 export const startRequest = () => ({ type: START_REQUEST });
 export const endRequest = () => ({ type: END_REQUEST });
@@ -51,6 +53,16 @@ export const loadProductRequest = () => {
     } catch (e) {
       dispatch(errorRequest(e.message));
     }
+  };
+};
+
+export const setSearchValues = (type, value) => {
+  return {
+    type: SET_SEARCH_VALUE,
+    payload: {
+      type,
+      value,
+    },
   };
 };
 
