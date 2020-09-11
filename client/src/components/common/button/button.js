@@ -3,19 +3,23 @@ import styles from "./button.module.scss";
 import PropTypes from "prop-types";
 import {NavLink} from 'react-router-dom';
 
-const Button = ({onClick,width,children,margin,padding,link}) => {
+const Button = ({onClick,width,children,margin,padding,link,fontSize,uppercase}) => {
   return (
+    <NavLink to={link}>
   <button className={styles.button} 
    style={{
        width: `${width}`,
        margin: `${margin}`,
-       padding:`${padding}`
+       padding:`${padding}`,
+       fontSize:`${fontSize}`,
+       textTransform:`${uppercase === false ? "none" : "uppercase"}`
 }}
   onClick={onClick}>
-      <NavLink to={link}>
+     
       {children}
-      </NavLink>
+      
   </button>
+  </NavLink>
   )
 };
 
@@ -25,6 +29,8 @@ Button.propTypes = {
   margin: PropTypes.string,
   link:PropTypes.string,
   padding:PropTypes.string,
+  fontSize: PropTypes.string,
+  uppercase: PropTypes.bool,
 };
 Button.defaultProps = {
     link:'/',

@@ -6,11 +6,12 @@ import { faSearch,faCartPlus } from "@fortawesome/free-solid-svg-icons";
 
 
 
-const HorizontalProductBox = ({ id, image, title, price,submit }) => {
+
+const HorizontalProductBox = ({ id, image, title, price,addToBasket}) => {
   
 
   return (
-    <div className={styles.horizontalProductBox}>
+    <div className={styles.horizontalProductBox} id={id}>
       <div className={styles.img}>
         <img src={image} alt="product" />
       </div>
@@ -21,7 +22,7 @@ const HorizontalProductBox = ({ id, image, title, price,submit }) => {
         Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w.
         </p>
         <div className={styles.buttonBox}>
-        <FontAwesomeIcon icon={faCartPlus} className={styles.buttonIcon} onClick={() => submit({ id, image, title, price})}/>
+        <FontAwesomeIcon icon={faCartPlus} className={styles.buttonIcon} onClick={()=>addToBasket()}/>
         <FontAwesomeIcon icon={faSearch} className={styles.buttonIcon}/>
       </div>
       </div>
@@ -32,14 +33,15 @@ const HorizontalProductBox = ({ id, image, title, price,submit }) => {
 HorizontalProductBox.propTypes = {
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
-  submit:PropTypes.func,
+  price: PropTypes.number.isRequired,
+  basket:PropTypes.array,
+  addToBasket:PropTypes.func,
 };
-// HorizontalProductBox.defaultProps = {
-//   image:
-//     "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80",
-//   title: "Sofa rozkładana biała",
-//   price: " 1500 zł - 2000",
-// };
+HorizontalProductBox.defaultProps = {
+  image:
+    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80",
+  title: "Sofa rozkładana biała",
+  price: " 1500 zł - 2000",
+};
 
 export default HorizontalProductBox;

@@ -1,31 +1,13 @@
 import axios from "axios";
 import { API_URL } from "../config";
+import initialState from './initialState';
 
 /* Selectors */
 export const getAllProducts = ({ product }) => product.data;
-export const getRequest = ({ product }) => product.request;
-
-// export const getFilteredProducts = ({ products, filters }) => {
-//   let output = products;
-
-//   //filter by searchPhrase
-//   if (filters.searchPhrase) {
-//     const pattern = new ReqExp(filters.searchPhrase, "i");
-//     output = output.filter((product) => pattern.test(product.name));
-//   }
-
-//   return output.reverse();
-// };
-// export const getProductById = ({ products }, productId) => {
-//   const filtered = products.filter(function (product) {
-//     return (product.id = productID);
-//   });
-//   console.log("filtering prodducts by productId:", productId, filtered);
-//   return filtered.length ? filtered[0] : { error: true };
-// };
+export const getRequest = ({ product }) =>product.request;
 
 const reducerName = "products";
-const createActionName = (name) => `app/${reducerName}/${name}`;
+const createActionName = (name) => `api/${reducerName}/${name}`;
 
 const START_REQUEST = createActionName("START_REQUEST");
 const END_REQUEST = createActionName("END_REQUEST");
@@ -63,18 +45,24 @@ export const setSearchValues = (type, value) => {
       type,
       value,
     },
+ 
   };
+  
 };
+// const initialState = {
+//   data: [],
+//   request: {
+//     pending: false,
+//     error: null,
+//     success: null,
+//   },
+//   SearchValues: {
+//     search: '',
+//   },
+// };
 
-const initialState = {
-  data: [],
-  request: {
-    pending: false,
-    error: null,
-    success: null,
-  },
-};
-export default function reducer(statePart = initialState, action = {}) {
+
+export default function reducer(statePart = initialState.product, action = {}) {
   switch (action.type) {
     case LOAD_PRODUCT:
       return { ...statePart, data: [...action.payload] };
@@ -103,6 +91,14 @@ export default function reducer(statePart = initialState, action = {}) {
           pending: false,
           error: action.error,
           success: false,
+        },
+      };
+    case SET_SEARCH_VALUE:
+      return {
+        ...statePart,
+        SearchValues: {
+          ...statePart.SearchValues,
+          [action.payload.type]:action.payload.value,
         },
       };
     default:

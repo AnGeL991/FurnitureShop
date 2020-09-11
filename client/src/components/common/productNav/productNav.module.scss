@@ -1,3 +1,5 @@
+@import '../../../styles/settings.scss';
+
 .productNav {
     margin-left: 25%;
     overflow: hidden;
@@ -10,7 +12,7 @@
       transition: 0.1s linear all;
       position: relative;
       a {
-        color: #343538;
+        color: $font-dark;
         text-decoration: none;
         text-transform: uppercase;
       }
@@ -21,14 +23,14 @@
         height: 1px;
         width: 0;
         position: absolute;
-        background-color: #b74334;
+        background-color: $bgc-color;
         transition: 0.2s linear all;
       }
       &:hover::after {
         width: 100%;
       }
       &:hover a {
-        color: #b74434;
+        color: $bgc-color;
       }
     }
   }

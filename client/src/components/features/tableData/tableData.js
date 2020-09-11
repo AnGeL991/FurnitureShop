@@ -8,33 +8,20 @@ class TableData extends Component {
     this.state = {
       delivery: 200,
     };
-    this.handleChange.bind(this);
   }
 
-  componentDidMount() {
-    const { loadOrder } = this.props;
-    loadOrder();
-  }
-  componentDidUpdate() {
-    console.log(this.totalPaymount);
-  }
-  handleChange=(event)=>{
-     this.setState({
-       delivery:event.target.value,
-     })
-  }
-  totalPaymount;
+
+  handleChange = (e) => {
+    this.setState({
+      delivery: e.target.value,
+    });
+    console.log(e.target.value);
+  };
+
   renderTableData() {
-    const { request, order } = this.props;
-    let payments = 0;
-    if (request.pending) return <div>Pending</div>;
-    else if (request.error) return <div>something is wrong</div>;
-    else if (!request.success) return <div>Nie masz nic w koszyku</div>;
-    else if (request.success)
+    const {order } = this.props;
+    console.log(order);
       return order.map((order) => {
-        payments += parseInt(order.price, 10);
-        console.log("price", payments);
-        this.totalPaymount = payments;
         return (
           <tr key={order.id} className={styles.cartItem}>
             <td className={styles.productRemove}>X</td>
@@ -48,7 +35,7 @@ class TableData extends Component {
                 <label></label>
                 <input
                   type="number"
-                  value="1"
+                  defaultValue="1"
                   title="Szt."
                   step="1"
                   className={styles.inputAmount}
@@ -56,20 +43,18 @@ class TableData extends Component {
                 />
               </div>
             </td>
-            <td className={styles.productSubtotal} o>
-              {order.price} zł
-            </td>
+            <td className={styles.productSubtotal}>{order.price} zł</td>
           </tr>
         );
       });
   }
 
   render() {
-    const { request } = this.props;
-    if (request.pending) return <div>Pending</div>;
-    else if (request.error) return <div>something is wrong</div>;
-    else if (!request.success) return <div>Nie masz nic w koszyku</div>;
-    else if (request.success)
+    const {order } = this.props;
+    const totalPay = order.reduce((total, orders) => {
+      return total + orders.price;
+    }, 0);
+    console.log(totalPay);
       return (
         <section className={styles.contentBox}>
           <div className={styles.wrapper}>
@@ -88,7 +73,7 @@ class TableData extends Component {
                 <tbody>
                   {this.renderTableData()}
                   <tr>
-                    <td colspan="6" className={styles.couponSection}>
+                    <td colSpan="6" className={styles.couponSection}>
                       <div className={styles.coupon}>
                         <label></label>
                         <input
@@ -123,10 +108,10 @@ class TableData extends Component {
               <table>
                 <tbody>
                   <tr>
-                    <th>Kwota</th>
+                    <th>Kwota zamówienia</th>
                     <td>
                       <span className={styles.priceAmount}>
-                        {this.totalPaymount}&nbsp;
+                        {totalPay}&nbsp;
                         <span className={styles.priceSymbol}>zł</span>
                       </span>
                     </td>
@@ -151,7 +136,13 @@ class TableData extends Component {
                           </label>
                         </li>
                         <li>
-                          <input type="radio" name="method" checked="checked" value={200} onChange={this.handleChange}/>
+                          <input
+                            type="radio"
+                            name="method"
+                            checked="checked"
+                            value={200}
+                            onChange={this.handleChange}
+                          />
                           <label>
                             Przesyłka Kurierska:
                             <span className={styles.shippingPrice}>
@@ -167,7 +158,7 @@ class TableData extends Component {
                     <th>Suma</th>
                     <td>
                       <span className={styles.totalPaymount}>
-                        {this.totalPaymount + parseFloat(this.state.delivery)}&nbsp;
+                        {totalPay + parseFloat(this.state.delivery)}&nbsp;
                         <span className={styles.currentCash}>zł</span>
                       </span>
                     </td>

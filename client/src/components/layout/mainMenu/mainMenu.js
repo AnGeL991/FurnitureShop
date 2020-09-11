@@ -3,12 +3,12 @@ import styles from "./mainMenu.module.scss";
 import { NavLink } from "react-router-dom";
 import Logo from "../../common/logo/logo";
 import Search from "../../common/searchInput/search";
-import MiniProductList from "../../features/miniProductList/miniProductList";
+import MiniProductList from "../../features/miniProductList/miniProductListContainer";
 
 const MainMenu = () => {
   return (
     <header id="Menu" className={styles.mainMenu}>
-      <nav>
+      <nav className={styles.mainNav}>
         <div className={styles.navMidle}>
           <Logo />
         </div>

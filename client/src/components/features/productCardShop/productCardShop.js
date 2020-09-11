@@ -1,18 +1,27 @@
-import React, { Component} from "react";
+import React, { Component } from "react";
 import styles from "./productCardShop.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSortDown, faTh, faList } from "@fortawesome/free-solid-svg-icons";
-import HorizontalProductBox from "../horizontalProductBox/horizontalProductBox";
-import settings from "../../../db/settings";
-import ProductBox from '../../features/productBox/productBox';
+import HorizontalProductBox from "../horizontalProductBox/horizontalProductBoxContainer";
+import ProductBox from "../../features/productBox/productBoxContainer";
 
 class ProductCardShop extends Component {
-
-  state = {
-    category:{
-      small:false,
-      big:true,
-    },
+  constructor(props) {
+    super(props);
+    this.state = {
+      productList: {
+        small: false,
+      },
+      amountProductOnList: {
+        value: 15,
+      },
+      category: {
+        activeCategory: null,
+      },
+      Option: {
+        activeOption : "",
+      }
+    };
   }
 
   componentDidMount() {
@@ -20,71 +29,91 @@ class ProductCardShop extends Component {
     loadProduct();
   }
 
-  handleAddProduct(product) {
-  const payload = {product};
-  const url = settings.db.API_URL + "/" + settings.db.endpoint.orders;
-  const fetchOptions = {
-    cache: "no-cache",
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(payload),
+  handleChangeShowList = () => {
+    this.setState((prevState) => ({
+      productList: {
+        small: !prevState.productList.small,
+      },
+    }));
   };
-  fetch(url, fetchOptions)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (parsedResponse) {
-      console.log("parsedResponse", parsedResponse);
+  handleChangeAmountProduct = (e) => {
+    this.setState({
+      amountProductOnList: {
+        value: e.target.value,
+      },
     });
-  }
-  changeSmallList=()=>{
-    this.setState({
-      category:{
-        small:true,
-        big:false,
-      }
-    })
-  }
-  changeBigList=()=>{
+  };
 
-    this.setState({
-      category:{
-        small:false,
-        big:true,
-      }
-    })
-  }
   render() {
     const { request, products } = this.props;
-    const {small} = this.state.category;
-    console.log(products);
+    const { small } = this.state.productList;
+    const { value } = this.state.amountProductOnList;
+    const categoryProduct = products.filter(item => item.category === this.state.category.activeCategory);
+    const elemsToDisplay = categoryProduct.length === 0 ? products.slice(0,value): categoryProduct.slice(0,value);
+
     if (request.pending) return <div>Pending</div>;
     else if (request.error) return <div>something is wrong</div>;
     else if (!request.success)
-      return <div>Don't have product on the warehouse</div>;
+      return <div> Don't have product on the warehouse</div>;
     else if (request.success)
       return (
         <section className={styles.contentBox}>
           <div className={styles.toolbar}>
             <div className={styles.toolbarLeft}>
               <p className={styles.resultCount}>
-                Wyświetlanie 1-12 z 99 wyników
+                Wyświetlanie {elemsToDisplay.length <= value ? elemsToDisplay.length : value} z {products.length} wyników
               </p>
               <div className={styles.vievCount}>
                 <p> pokaż</p>
                 <ul>
-                  <li className={styles.amount}>15</li>
-                  <li className={styles.amount}>30</li>
-                  <li className={styles.amount}>60</li>
+                  <li
+                    className={[
+                      `${styles.amount} + ${
+                        value === 15 ? styles.active : null
+                      }`,
+                    ]}
+                    value={15}
+                    onClick={this.handleChangeAmountProduct}
+                  >
+                    15
+                  </li>
+                  <li
+                    className={[
+                      `${styles.amount} + ${
+                        value === 30 ? styles.active : null
+                      }`,
+                    ]}
+                    value={30}
+                    onClick={this.handleChangeAmountProduct}
+                  >
+                    30
+                  </li>
+                  <li
+                    className={[
+                      `${styles.amount} + ${
+                        value === 60 ? styles.active : null
+                      }`,
+                    ]}
+                    value={60}
+                    onClick={this.handleChangeAmountProduct}
+                  >
+                    60
+                  </li>
                 </ul>
               </div>
             </div>
             <div className={styles.toolbarRight}>
               <div className={styles.vievToogle}>
-                <FontAwesomeIcon icon={faTh} className={styles.icon} onClick={this.changeSmallList} />
-                <FontAwesomeIcon icon={faList} className={styles.icon} onClick={this.changeBigList} />
+                <FontAwesomeIcon
+                  icon={faTh}
+                  className={styles.icon}
+                  onClick={this.handleChangeShowList}
+                />
+                <FontAwesomeIcon
+                  icon={faList}
+                  className={styles.icon}
+                  onClick={this.handleChangeShowList}
+                />
               </div>
               <div className={styles.ordering}>
                 <p>
@@ -117,22 +146,28 @@ class ProductCardShop extends Component {
             </div>
           </div>
           <div className={styles.productCard}>
-          {small === true ?<>
-            {products.map((el)=>(<ProductBox key={el.id}{...el}
-            submit={this.handleAddProduct.bind(this)}/>))}
-            </> :(<>{products.map((el) => (
-              <HorizontalProductBox
-                key={el.id}
-                {...el}
-                submit={this.handleAddProduct.bind(this)}
-              />
-            ))}</>)}
+            {small === true ? (
+              <>
+                {elemsToDisplay.map((el) => (
+                  <ProductBox key={el._id} {...el} />
+                ))}
+              </>
+            ) : (
+              <>
+                {elemsToDisplay.map((el) => (
+                  <HorizontalProductBox key={el._id} {...el} />
+                ))}
+              </>
+            )}
           </div>
         </section>
       );
   }
 }
+ProductCardShop.defaultProps = {
+   category: [],
+   products:[],
+  
+}
 
 export default ProductCardShop;
-
-

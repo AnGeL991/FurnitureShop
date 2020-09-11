@@ -9,8 +9,11 @@
   top: 0;
   z-index: 999999;
   background-color: white;
-
   letter-spacing: 2px;
+  .mainNav{
+    max-width: 1440px;
+    margin:0 auto;
+  }
 }
 
 .navLeft,
@@ -30,14 +33,13 @@ li,
   left: 20%;
 
   li {
-    margin-top: 20px;
+    margin-top: 25px;
     padding: 20px;
     transition: 0.1s linear all;
     position: relative;
 
     a {
-      color: #343538;
-      //color:gray;
+      color: $font-dark;
       text-decoration: none;
       text-transform: uppercase;
     }
@@ -49,7 +51,7 @@ li,
       height: 1px;
       width: 0;
       position: absolute;
-      background-color: #b74334;
+      background-color: $bgc-color;
       transition: 0.2s linear all;
 
     }
@@ -59,25 +61,24 @@ li,
     }
 
     &:hover a {
-      color: #b74434;
+      color: $bgc-color;
     }
   }
 
 }
 
 .navMidle {
-  left: 5%;
-  width: 15%;
+  top:-30%;
+  left: 7%;
+  width: 20%;
   position: absolute;
 }
 
 .navRight {
   position: absolute;
   top: 50%;
-  right: 0;
   transform: translateY(-25%);
   width: 30%;
-
-
+  right: 0;
 }
 

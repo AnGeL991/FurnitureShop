@@ -2,15 +2,15 @@ import React from "react";
 import styles from "./shop.module.scss";
 import Header from "../../common/headerTitle/header";
 import Container from "../../layout/container/container";
-import CategoryProduct from '../../features/categoryProduct/categoryProduct';
+import CategoryProduct from '../../features/categoryProduct/categoryProductContainer';
 import ProductCardShop from "../../features/productCardShop/productCardShopContainer";
 
 const Shop = () => (
-  <section id="shop" className={styles.page}>
+  <section id="shop" className="page">
     <Header
       fontSize="34px"
       textAlign="left"
-      fontWeight="500"
+      fontWeight="300"
       margin="20px 140px "
     >
       Sklep

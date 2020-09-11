@@ -1,14 +1,15 @@
 import {connect} from 'react-redux';
-import renderTableData from './tableData';
-import {getOrder,loadOrderRequest,getRequest} from '../../../redux/orderRedux';
+
+import {getOrderProduct} from '../../../redux/orderRedux';
+import TableData from './tableData';
 
 const mapStateToProps =(state) =>({
-    order:getOrder(state),
-    request: getRequest(state),
+    order:getOrderProduct(state),
+    //request: getRequest(state),
 });
 
-const mapDispatchToProps = (dispatch)=> ({
-    loadOrder:()=> dispatch(loadOrderRequest()),
-})
+// const mapDispatchToProps = (dispatch)=> ({
+//     loadOrder:()=> dispatch(loadOrderRequest()),
+// })
 
-export default connect(mapStateToProps,mapDispatchToProps)(renderTableData)
+export default connect(mapStateToProps)(TableData);

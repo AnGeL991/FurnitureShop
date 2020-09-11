@@ -1,7 +1,7 @@
 @import '../../../styles/settings.scss';
 
 .eachPost {
-    border: 0.5px solid #d9d9d9;
+    border: 0.5px solid $font-gray;
     margin: 20px 0;
 
     .wrapper {
@@ -24,7 +24,7 @@
     .description {
         grid-area: 1 / 2 / 2 / 3;
         margin-left: 40px;
-        color: #343538;
+        color: $font-dark;
         position: relative;
     }
 
@@ -53,7 +53,7 @@
 
         .icon {
             font-weight: 18px;
-            color: #343538;
+            color: $font-dark;
             margin-right: 5px;
         }
     }

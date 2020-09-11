@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import productCardShop from "./productCardShop";
-import { addProductRequest } from "../../../redux/orderRedux";
+//import { getOrderProduct } from "../../../redux/orderRedux";
 import {
   getAllProducts,
   getRequest,
@@ -10,9 +10,9 @@ import {
 const mapStateToProps = (state) => ({
   products: getAllProducts(state),
   request: getRequest(state),
+
 });
 const mapDispatchToProps = (dispatch) => ({
-  addProduct: (payload) => dispatch(addProductRequest(payload)),
   loadProduct: () => dispatch(loadProductRequest()),
 });
 

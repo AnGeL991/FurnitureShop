@@ -3,26 +3,26 @@
 .horizontalProductBox {
     font-family: $font-family;
     width: 100%;
-    height: 450px;
+    height: 350px;
     overflow: hidden;
     display: inline-block;
-    padding: 20px;
     transition: 0.2s linear all;
     display: grid;
     grid-template-columns: 0.8fr 1fr;
     grid-template-rows: 1fr;
-
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 20px;
    
     .img {
         padding: 20px;
         width: 100%;
-        height: 100%;
         grid-area: 1 / 1 / 2 / 2;
-
+        overflow: hidden;
         img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            
             transition: 0.2s linear all;
         }
     }
@@ -42,7 +42,7 @@
             cursor: pointer;
             &:hover{
                
-                    color:#b74334;
+                    color:$bgc-color;
                 
             }
         }
@@ -55,7 +55,7 @@
 
         .description {
             line-height: 2;
-            color: #9d9d9d;
+            color: $font-gray;
 
         }
 
@@ -65,11 +65,11 @@
             margin-top:20px;
             padding:15px;
             font-size: 50px;
-            border:0.8px solid #d9d9d9;
+            border:0.8px solid $font-gray;
             transition: 0.2s linear all;
             &:hover{
                 color:white;
-                background-color: #b74334;
+                background-color: $bgc-color;
             }
         }
     }

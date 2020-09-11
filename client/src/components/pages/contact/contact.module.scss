@@ -1,9 +1,5 @@
 @import '../../../styles/settings.scss';
 
-.page {
-    margin-top: 130px;
-    font-family: $font-family;
-}
 
 .adressBox{
     height: 30vh;
@@ -48,7 +44,6 @@
     text-align: center;
     .contactForm{
         grid-area: 1 / 1 / 2 / 2;
-       // background-color: red;
         margin: 50px 0;
         input,select,textarea{
             width: 80%;
@@ -83,7 +78,7 @@
 
         .inputSubmit{
             position: relative;
-            background-color:#d9d9d9;
+            background-color:$font-gray;
             color:black;
             text-transform: uppercase;
             transition: 0.5s all cubic-bezier(0.77, 0, 0.175, 1);
@@ -92,7 +87,7 @@
             border:none;
         }
         .inputSubmit:hover {
-            background-color: #b74334;
+            background-color: $bgc-color;
             color:white;
 
         }

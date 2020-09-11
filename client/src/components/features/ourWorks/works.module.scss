@@ -8,17 +8,21 @@
     margin: 30px;
   }
 .works {
-    height: 80vh;
     overflow: hidden;
+    display: flex;
     .eachWork {
+      display: flex;
+      flex:1;
+      justify-content: center;
+      background-position: center;
+      flex-direction: column;
       overflow: hidden;
-      box-sizing: border-box;
-      display: inline-block;
+      position: relative;
       width: 50%;
       height: 50%;
       background-size: cover;
       background-repeat: no-repeat;
-      position: relative;
+
       img {
         object-fit: cover;
         width: 100%;
@@ -35,12 +39,15 @@
         display: none;
       }
       .subtitle {
+        font-family: 'Amatic SC', cursive;
         letter-spacing: 2px;
+        width:100%;
         text-transform: uppercase;
         position: absolute;
+        text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
         top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        text-align: center;
+        transform: translate(0, -50%);
         color: white;
         margin: 0;
       }

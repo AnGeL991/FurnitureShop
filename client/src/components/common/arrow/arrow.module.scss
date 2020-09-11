@@ -10,7 +10,7 @@
     transition: 0.2s linear all;
     &:hover {
         .arrowCenter {
-            color: #b74334;
+            color: $bgc-color;
         }
     }
 }

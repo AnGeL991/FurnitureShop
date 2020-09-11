@@ -5,11 +5,12 @@ import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch,faCartPlus } from "@fortawesome/free-solid-svg-icons";
 
-const ProductBox = ({ width, id, title, price, image,submit }) => {
+
+const ProductBox = ({ width, _id, title, price, image,addToBasket }) => {
   return (
     <div
       className={styles.productBox}
-      id={id}
+      id={_id}
       css={css`
         width: ${width};
       `}
@@ -20,7 +21,7 @@ const ProductBox = ({ width, id, title, price, image,submit }) => {
         </div>
         <div className={styles.circleBox}>
           <FontAwesomeIcon icon={faCartPlus} 
-          className={styles.icon} onClick={()=> submit({id,image,title,price})} />
+          className={styles.icon} onClick={()=>addToBasket() } />
         </div>
 
         <img src={image} alt="product" />
@@ -33,20 +34,21 @@ const ProductBox = ({ width, id, title, price, image,submit }) => {
   );
 };
 ProductBox.propTypes = {
-  id: PropTypes.string.isRequired,
+  _id: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
   width: PropTypes.string.isRequired,
-  submit:PropTypes.func,
+  basket:PropTypes.array,
+  addToBasket:PropTypes.func,
 };
 ProductBox.defaultProps = {
-  id: "123",
+  _id: "123",
   image:
     "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80",
   title: "Nazwa Testowa",
-  price: " 13.54",
-  width: "25%",
+  price: 13.54,
+  width: "calc(25% - 20px)",
 };
 
 export default ProductBox;

@@ -6,7 +6,6 @@
 
 .contentBox {
     margin:50px 0 ;
-    
     display: grid;
     grid-template-columns: 0.6fr 1fr;
     grid-template-rows: 1fr;
@@ -49,7 +48,7 @@
             color:gray;
             transition: 0.2s linear all;
             &:hover{
-                color:#b74334;
+                color:$bgc-color;
             }
         }
     }

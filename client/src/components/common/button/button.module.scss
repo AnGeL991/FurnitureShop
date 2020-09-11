@@ -1,14 +1,17 @@
 @import '../../../styles/settings.scss';
 .button{
+
     font-family: $font-family;
-    font-size: 16px;
+    font-size: 14px;
     padding:10px;
     background-color: #b74434;
     border:none;
     transition:0.3s linear all;
     text-transform: uppercase;
-    a {
-        color:white;
+    letter-spacing: 1px;
+    color:white;
+    &:focus{
+        outline:none;
     }
     &:hover{
         cursor: pointer;

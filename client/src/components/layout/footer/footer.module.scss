@@ -7,8 +7,8 @@
   .topBorder,
   .bottomBorder {
     text-transform: uppercase;
-    border-top: 0.5px solid gray;
-    border-bottom: 0.5px solid gray;
+    border-top: 0.5px solid $font-gray;
+    border-bottom: 0.5px solid $font-gray;
     text-align: center;
     box-shadow: inset -27px -11px 300px -19px rgba(0, 0, 0, 0.75);
   }
@@ -104,7 +104,7 @@
     text-align: center;
     padding: 10px;
     &:hover a {
-        color:#b74434;
+        color:$bgc-color;
     }
     a {
       transition: 0.2s linear all;

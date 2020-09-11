@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./productCard.module.scss";
-import ProductBox from "../productBox/productBox";
+import ProductBox from "../productBox/productBoxContainer";
 import ProductNav from '../../common/productNav/productNav';
 import PublicitySlider from "../publicitySlider/publicitySlider";
 

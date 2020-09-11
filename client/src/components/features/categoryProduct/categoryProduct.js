@@ -1,11 +1,24 @@
-import React from "react";
+import React,{useState} from "react";
 import styles from "./categoryProduct.module.scss";
-import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
+import Button from "../../common/button/button";
 
-const CategoryProduct = () => {
+
+const CategoryProduct = ({addCategories}) => {
+  const categories =[
+    {id:'new', name:'new'},
+    {id:'accessories',name:'accessories'},
+    {id:'bed',name:'bed'},
+    {id:'sofas',name:'sofas'},
+    {id:'kitchenFurniture',name:'kitchenFurniture'},
+    {id:'tables',name:'tables'},
+    {id:'shelves',name:'shelves'},
+ ];
+
+  const [priceValue,setPriceValue]= useState(0);
+  
   return (
     <aside className={styles.aside}>
       <div className={styles.asideInner}>
@@ -24,43 +37,22 @@ const CategoryProduct = () => {
         </form>
         <div className={styles.categoriesMenu}>
           <h3>Kategorie</h3>
-
           <ul>
-            <li className={styles.categoriesLink}>
-              <NavLink to={"/"}>Nowości</NavLink>
-            </li>
-            <li className={styles.categoriesLink}>
-              <NavLink to="/">Akcesoria</NavLink>
-            </li>
-            <li className={styles.categoriesLink}>
-              <NavLink to="/">Łóżka</NavLink>
-            </li>
-            <li className={styles.categoriesLink}>
-              <NavLink to="/">Sofy</NavLink>
-            </li>
-            <li className={styles.categoriesLink}>
-              <NavLink to="/">Meble kuchenne</NavLink>
-            </li>
-            <li className={styles.categoriesLink}>
-              <NavLink to="/">Stoły rozkładane</NavLink>
-            </li>
-            <li className={styles.categoriesLink}>
-              <NavLink to="/">Stoły</NavLink>
-            </li>
-            <li className={styles.categoriesLink}>
-              <NavLink to="/">Regały</NavLink>
-            </li>
+            {categories.map((category)=>(<li className={styles.categoriesLink} key={category.id}  onClick={()=>addCategories(category.name)}>
+              <p className={styles.eachLink}>{category.name}</p>
+            </li>))}
           </ul>
         </div>
         <div className={styles.priceFilter}>
           <h4 className={styles.priceTitle}>Cena</h4>
-          <div className={styles.SliderAmount}>
-            <button type="submit" className={styles.amountButton}>
-              filtruj
-            </button>
+          <div className={styles.rageSlider}>
+            <input type="range" min="0" max="6600" step="50" onChange={(e)=>setPriceValue(e.target.value)}/>
+            <Button margin="50px 0 0 0" width="50%" uppercase={false}>
+              Filtruj
+            </Button>
             <div className={styles.priceLabel}>
               <span>Cena:</span>
-              <span>0&nbsp;zł</span>
+              <span>{priceValue}&nbsp;zł</span>
               <span>-</span>
               <span>6 600&nbsp;zł</span>
             </div>
@@ -72,7 +64,10 @@ const CategoryProduct = () => {
 };
 
 CategoryProduct.propTypes = {
-  category: PropTypes.string.isRequired,
+  id: PropTypes.string,
+  addCategories:PropTypes.func,
 };
+
+
 
 export default CategoryProduct;
