@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSortDown, faTh, faList } from "@fortawesome/free-solid-svg-icons";
 import HorizontalProductBox from "../horizontalProductBox/horizontalProductBoxContainer";
 import ProductBox from "../../features/productBox/productBoxContainer";
+import productCardShopContainer from "./productCardShopContainer";
+import PropTypes from 'prop-types';
 
 class ProductCardShop extends Component {
   constructor(props) {
@@ -36,6 +38,7 @@ class ProductCardShop extends Component {
       },
     }));
   };
+
   handleChangeAmountProduct = (e) => {
     this.setState({
       amountProductOnList: {
@@ -45,12 +48,11 @@ class ProductCardShop extends Component {
   };
 
   render() {
-    const { request, products } = this.props;
+    const { request, products,category,searchProduct } = this.props;
     const { small } = this.state.productList;
     const { value } = this.state.amountProductOnList;
-    const categoryProduct = products.filter(item => item.category === this.state.category.activeCategory);
-    const elemsToDisplay = categoryProduct.length === 0 ? products.slice(0,value): categoryProduct.slice(0,value);
-
+    const categoryProduct = products.filter(item => item.category === category);
+    const elemsToDisplay = categoryProduct.length === 0 && searchProduct.length ===0 ? products.slice(0,value): categoryProduct.slice(0,value) || searchProduct.slice(0,value);
     if (request.pending) return <div>Pending</div>;
     else if (request.error) return <div>something is wrong</div>;
     else if (!request.success)
@@ -61,7 +63,7 @@ class ProductCardShop extends Component {
           <div className={styles.toolbar}>
             <div className={styles.toolbarLeft}>
               <p className={styles.resultCount}>
-                Wyświetlanie {elemsToDisplay.length <= value ? elemsToDisplay.length : value} z {products.length} wyników
+                Wyświetlanie {elemsToDisplay.length <= value ? elemsToDisplay.length : value} z {elemsToDisplay.length} wyników
               </p>
               <div className={styles.vievCount}>
                 <p> pokaż</p>
@@ -164,10 +166,16 @@ class ProductCardShop extends Component {
       );
   }
 }
+ProductCardShop.propTypes ={
+  category:PropTypes.string,
+  products: PropTypes.array,
+  searchProduct:PropTypes.array,
+}
+
 ProductCardShop.defaultProps = {
-   category: [],
+   category: '',
    products:[],
-  
+   searchProduct:[],
 }
 
 export default ProductCardShop;

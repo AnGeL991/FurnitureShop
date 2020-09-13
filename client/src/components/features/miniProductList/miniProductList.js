@@ -1,14 +1,13 @@
 import React from "react";
 import styles from "./miniProductList.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingBasket,faTimes } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../common/button/button";
 import PropTypes from "prop-types";
 
 class MiniProductList extends React.Component {
   state = {
     isBoxVisible: false,
-    totalAmount: 2,
   };
 
   toggleBox = () => {
@@ -16,10 +15,13 @@ class MiniProductList extends React.Component {
   };
 
   renderList = () => {
-    const { orders } = this.props;
+    const { orders,removeFromBasekt } = this.props;
       return orders.map((order) => {
         return (
           <li className={styles.miniCardList} key={order._id}>
+            <div className={styles.removeFromOrder}>
+              <p className={styles.removeIcon} onClick={()=>removeFromBasekt()}>X</p>
+            </div>
             <img
               src={order.image}
               className={styles.miniCardImage}
@@ -29,7 +31,7 @@ class MiniProductList extends React.Component {
               {order.title}
             </a>
             <div className={styles.miniProductContent}>
-              <p>{order.description}</p>
+              <p>{order.description}Przykładowy opis techniczny rozmiary</p>
               <span className={styles.quantity}>
                 {order.amount} x
                 <span className={styles.amount}> {order.price} zł</span>
@@ -117,6 +119,7 @@ MiniProductList.protoType = {
   amount: PropTypes.number.isRequired,
   description: PropTypes.string,
   orders: PropTypes.array,
+  removeFromBasekt:PropTypes.func,
 };
 MiniProductList.defaultProps = {
   id: "asda",

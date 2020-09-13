@@ -6,13 +6,11 @@ const initialState = {
       error: null,
       success: null,
     },
-    SearchValues: {
-      search: '',
-    },},
-  order:[],
-  categories: {
-    category:'',
+    search: '',
   },
+  categories: '',
+  order:[],
+ 
   errorId:null,
 };
 

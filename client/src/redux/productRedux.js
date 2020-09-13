@@ -5,6 +5,13 @@ import initialState from './initialState';
 /* Selectors */
 export const getAllProducts = ({ product }) => product.data;
 export const getRequest = ({ product }) =>product.request;
+export const getProductBySearch =({product}) =>{
+  product.data.filter(products => new RegExp(product.search, 'i').test(products.title));
+};
+
+
+
+
 
 const reducerName = "products";
 const createActionName = (name) => `api/${reducerName}/${name}`;
@@ -24,6 +31,7 @@ export const loadProduct = (payload) => ({
   payload,
   type: LOAD_PRODUCT,
 });
+
 
 export const loadProductRequest = () => {
   return async (dispatch) => {
@@ -47,22 +55,8 @@ export const setSearchValues = (type, value) => {
     },
  
   };
-  
 };
-// const initialState = {
-//   data: [],
-//   request: {
-//     pending: false,
-//     error: null,
-//     success: null,
-//   },
-//   SearchValues: {
-//     search: '',
-//   },
-// };
-
-
-export default function reducer(statePart = initialState.product, action = {}) {
+export default function reducer(statePart = initialState.product, action) {
   switch (action.type) {
     case LOAD_PRODUCT:
       return { ...statePart, data: [...action.payload] };
@@ -93,14 +87,10 @@ export default function reducer(statePart = initialState.product, action = {}) {
           success: false,
         },
       };
+    
     case SET_SEARCH_VALUE:
-      return {
-        ...statePart,
-        SearchValues: {
-          ...statePart.SearchValues,
-          [action.payload.type]:action.payload.value,
-        },
-      };
+      return  {...statePart,
+        [action.payload.type.type]:action.payload.type.value,}
     default:
       return statePart;
   }

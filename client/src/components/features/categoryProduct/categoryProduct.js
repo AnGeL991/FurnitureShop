@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import Button from "../../common/button/button";
 
 
-const CategoryProduct = ({addCategories}) => {
+const CategoryProduct = ({addCategories,searchValue}) => {
   const categories =[
     {id:'new', name:'new'},
     {id:'accessories',name:'accessories'},
@@ -18,7 +18,13 @@ const CategoryProduct = ({addCategories}) => {
  ];
 
   const [priceValue,setPriceValue]= useState(0);
-  
+  function handleChangeSearch(e){
+    console.log(e.target.type);
+    const type = e.target.type;
+    const value = e.target.value;
+    searchValue(type,value)
+  }
+
   return (
     <aside className={styles.aside}>
       <div className={styles.asideInner}>
@@ -29,6 +35,7 @@ const CategoryProduct = ({addCategories}) => {
             name="search"
             title="Szukaj:"
             className={styles.inputSearch}
+            onChange={(e)=>handleChangeSearch(e)}
           />
           <button type="submit" className={styles.searchButton}>
             <FontAwesomeIcon icon={faSearch} />
@@ -66,6 +73,7 @@ const CategoryProduct = ({addCategories}) => {
 CategoryProduct.propTypes = {
   id: PropTypes.string,
   addCategories:PropTypes.func,
+  searchValue:PropTypes.func,
 };
 
 

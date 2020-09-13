@@ -10,7 +10,6 @@ class TableData extends Component {
     };
   }
 
-
   handleChange = (e) => {
     this.setState({
       delivery: e.target.value,
@@ -54,7 +53,6 @@ class TableData extends Component {
     const totalPay = order.reduce((total, orders) => {
       return total + orders.price;
     }, 0);
-    console.log(totalPay);
       return (
         <section className={styles.contentBox}>
           <div className={styles.wrapper}>
