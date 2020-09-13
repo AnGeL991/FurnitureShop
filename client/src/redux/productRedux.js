@@ -6,7 +6,7 @@ import initialState from './initialState';
 export const getAllProducts = ({ product }) => product.data;
 export const getRequest = ({ product }) =>product.request;
 export const getProductBySearch =({product}) =>{
-  product.data.filter(products => new RegExp(product.search, 'i').test(products.title));
+  return product.search === ''|| undefined ? [] : product.data.filter(products => new RegExp(product.search, 'i').test(products.title));
 };
 
 

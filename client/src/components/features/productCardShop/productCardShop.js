@@ -52,7 +52,11 @@ class ProductCardShop extends Component {
     const { small } = this.state.productList;
     const { value } = this.state.amountProductOnList;
     const categoryProduct = products.filter(item => item.category === category);
-    const elemsToDisplay = categoryProduct.length === 0 && searchProduct.length ===0 ? products.slice(0,value): categoryProduct.slice(0,value) || searchProduct.slice(0,value);
+    const elemsToDisplay = categoryProduct.length === 0 ? products.slice(0,value): categoryProduct.slice(0,value) ===0;
+    const ProductDisplay = searchProduct.length ===0 ? elemsToDisplay : searchProduct;
+console.log(ProductDisplay, searchProduct);
+
+
     if (request.pending) return <div>Pending</div>;
     else if (request.error) return <div>something is wrong</div>;
     else if (!request.success)
@@ -63,7 +67,7 @@ class ProductCardShop extends Component {
           <div className={styles.toolbar}>
             <div className={styles.toolbarLeft}>
               <p className={styles.resultCount}>
-                Wyświetlanie {elemsToDisplay.length <= value ? elemsToDisplay.length : value} z {elemsToDisplay.length} wyników
+                Wyświetlanie {ProductDisplay.length <= value ? ProductDisplay.length : value} z {ProductDisplay.length} wyników
               </p>
               <div className={styles.vievCount}>
                 <p> pokaż</p>
@@ -150,13 +154,13 @@ class ProductCardShop extends Component {
           <div className={styles.productCard}>
             {small === true ? (
               <>
-                {elemsToDisplay.map((el) => (
+                {ProductDisplay.map((el) => (
                   <ProductBox key={el._id} {...el} />
                 ))}
               </>
             ) : (
               <>
-                {elemsToDisplay.map((el) => (
+                {ProductDisplay.map((el) => (
                   <HorizontalProductBox key={el._id} {...el} />
                 ))}
               </>
