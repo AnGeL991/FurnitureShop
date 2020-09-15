@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React from "react";
 import styles from "./categoryProduct.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -6,24 +6,29 @@ import PropTypes from "prop-types";
 import Button from "../../common/button/button";
 
 
-const CategoryProduct = ({addCategories,searchValue}) => {
+const CategoryProduct = ({addCategories,searchValue,maxPrice,setPriceValue,minPrice}) => {
   const categories =[
-    {id:'new', name:'new'},
-    {id:'accessories',name:'accessories'},
-    {id:'bed',name:'bed'},
+    {id:'',name:'wszystkie'},
+    {id:'new', name:'nowości'},
+    {id:'accessories',name:'akcesoria'},
+    {id:'bed',name:'łózka'},
     {id:'sofas',name:'sofas'},
-    {id:'kitchenFurniture',name:'kitchenFurniture'},
-    {id:'tables',name:'tables'},
-    {id:'shelves',name:'shelves'},
- ];
-
-  const [priceValue,setPriceValue]= useState(0);
-  function handleChangeSearch(e){
+    {id:'kitchenFurniture',name:'meble kuchenne'},
+    {id:'tables',name:'stoły'},
+    {id:'shelves',name:'półki'},
+ ];  
+  function handleChangeSearch (e){
     console.log(e.target.type);
     const type = e.target.type;
     const value = e.target.value;
     searchValue(type,value)
   }
+  function handleChangeValue(e){
+    const value = e.target.value;
+    //console.log(value);
+    setPriceValue(value)
+  }
+
 
   return (
     <aside className={styles.aside}>
@@ -45,7 +50,7 @@ const CategoryProduct = ({addCategories,searchValue}) => {
         <div className={styles.categoriesMenu}>
           <h3>Kategorie</h3>
           <ul>
-            {categories.map((category)=>(<li className={styles.categoriesLink} key={category.id}  onClick={()=>addCategories(category.name)}>
+            {categories.map((category)=>(<li className={styles.categoriesLink} key={category.id}  onClick={()=>addCategories(category.id)}>
               <p className={styles.eachLink}>{category.name}</p>
             </li>))}
           </ul>
@@ -53,15 +58,15 @@ const CategoryProduct = ({addCategories,searchValue}) => {
         <div className={styles.priceFilter}>
           <h4 className={styles.priceTitle}>Cena</h4>
           <div className={styles.rageSlider}>
-            <input type="range" min="0" max="6600" step="50" onChange={(e)=>setPriceValue(e.target.value)}/>
+            <input type="range" min="0" max={maxPrice} step="1" onChange={(e)=>handleChangeValue(e)}/>
             <Button margin="50px 0 0 0" width="50%" uppercase={false}>
               Filtruj
             </Button>
             <div className={styles.priceLabel}>
               <span>Cena:</span>
-              <span>{priceValue}&nbsp;zł</span>
+              <span>{parseInt(minPrice)}&nbsp;zł</span>
               <span>-</span>
-              <span>6 600&nbsp;zł</span>
+              <span>{maxPrice}&nbsp;zł</span>
             </div>
           </div>
         </div>
@@ -74,8 +79,14 @@ CategoryProduct.propTypes = {
   id: PropTypes.string,
   addCategories:PropTypes.func,
   searchValue:PropTypes.func,
+  maxPrice:PropTypes.number,
+  minPrice:PropTypes.number,
 };
-
+CategoryProduct.defaultProps={
+  maxPrice:0,
+  setPriceValue:0,
+  minPrice:0,
+}
 
 
 export default CategoryProduct;

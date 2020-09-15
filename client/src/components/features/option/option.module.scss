@@ -1,0 +1,76 @@
+@import '../../../styles/settings.scss';
+
+
+
+.optionBox {
+    display: inline-block;
+    position: relative;
+    margin-left: 30px;
+    text-align: center;
+    width: 40%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid $font-gray;
+    &:hover {
+        .showList {
+        opacity: 1;
+        transform: translateY(0%);
+        visibility: unset;
+    }
+    .arrowIcon {
+        transform: rotate(180deg) translateY(-20%);
+    }
+}
+    p {
+        margin: 0;
+    }
+
+    .arrowIcon {
+        width: 1.625em;
+        vertical-align: none;
+        transform: translateY(-10%);
+
+    }
+    .showList {
+        border: 1px solid $font-gray;
+        z-index: 99999;
+        position: absolute;
+        top: 60%;
+        right: -1px;
+        padding: 0;
+        text-align: left;
+        width: 200%;
+        visibility: hidden;
+        transition: 0.2s linear all;
+        transform: translateY(20%);
+        opacity: 0;
+        background-color: white;
+        overflow: hidden;
+
+        li {
+
+            display: inline-block;
+            padding: 5px;
+            width: 100%;
+
+            a {
+                border-radius: 4px;
+                display: block;
+                padding: 10px;
+                color: gray;
+                width: 100%;
+                font-size: 12px;
+            }
+
+            &:hover a {
+                background-color: $bgc-color;
+                color: white;
+            }
+        }
+
+        .active {
+            background-color: $bgc-color;
+            color: white;
+        }
+    }
+}

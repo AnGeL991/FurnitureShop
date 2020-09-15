@@ -16,10 +16,11 @@ export const removeFromBasekt = payload =>({payload,type:REMOVE_FROM_BASKET});
 export default function reducer(statePart = initialState.order, action ) {
   switch (action.type) {
     case ADD_TO_BASKET: {
-      return [...statePart, { ...action.payload, id: action.payload.id }]
-    }
+      return [...statePart, { ...action.payload, id: action.payload._id }]
+    }; 
     case REMOVE_FROM_BASKET: {
-      return statePart.filter(product=> product.id !== action.payload.id)
+      console.log(statePart);
+      return statePart.filter(product=> product._id !== action.payload.id)
     }
     default:
       return statePart;

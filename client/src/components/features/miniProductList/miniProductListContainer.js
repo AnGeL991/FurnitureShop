@@ -6,9 +6,9 @@ const mapStateToProps = state=>({
     orders:getOrderProduct(state),
 });
 const mapDispatchToProps = (dispatch)=>({
-    removeFromBasekt: (id) =>
+    removeFromBasekt: (_id) =>
     dispatch(removeFromBasekt({
-        id
+        id:_id
     }))
 })
 

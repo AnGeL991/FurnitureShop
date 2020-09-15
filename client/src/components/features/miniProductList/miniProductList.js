@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./miniProductList.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingBasket,faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../common/button/button";
 import PropTypes from "prop-types";
 
@@ -20,7 +20,7 @@ class MiniProductList extends React.Component {
         return (
           <li className={styles.miniCardList} key={order._id}>
             <div className={styles.removeFromOrder}>
-              <p className={styles.removeIcon} onClick={()=>removeFromBasekt()}>X</p>
+              <p className={styles.removeIcon} onClick={()=>removeFromBasekt(order._id)}>X</p>
             </div>
             <img
               src={order.image}

@@ -1,139 +1,66 @@
-@import '../../../styles/settings.scss';
+@import "../../../styles/settings.scss";
 
 .contentBox {
+  grid-area: 1 / 2 / 2 / 3;
 
-    grid-area: 1 / 2 / 2 / 3;
+  .toolbar {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 0.1fr;
+    color: gray;
+    font-size: 14px;
 
-    .toolbar {
+    .toolbarLeft {
+      grid-area: 1 / 1 / 2 / 2;
 
-        padding: 10px;
-        display: grid;
-        grid-template-columns: 3fr 1fr;
-        grid-template-rows: 0.1fr;
-        color: gray;
-        font-size: 14px;
+      .resultCount,
+      .vievCount {
+        display: inline-block;
+        width: 50%;
+      }
 
-        .toolbarLeft {
-
-            grid-area: 1 / 1 / 2 / 2;
-
-            .resultCount,
-            .vievCount {
-                display: inline-block;
-                width: 50%;
-            }
-
-            p,
-            ul {
-                display: inherit;
-                padding-left: 10px;
-            }
-
-        }
-
-        .amount {
-            padding: 5px;
-            cursor: pointer;
-
-            &:hover {
-                color: $bgc-color;
-            }
-            
-        }
-        .active {
-            color:$bgc-color;
-        }
-        .toolbarRight {
-            grid-area: 1 / 2 / 2 / 3;
-
-            .vievToogle{
-                margin-left:40px;
-                display: inline-block;
-                .icon{
-                    margin-left:10px;
-                    font-size: 20px;
-                    transition: 0.2s linear all;
-                    cursor: pointer;
-                   &:hover{
-                       color:$bgc-color ;
-                   }
-                }
-            }
-            .showList {
-                border: 1px solid $font-gray;
-                z-index: 99999;
-                position: absolute;
-                top: 60%;
-                right: -1px;
-                padding: 0;
-                text-align: left;
-                width: 200%;
-                visibility: hidden;
-                transition: 0.2s linear all;
-                transform: translateY(20%);
-                opacity: 0;
-                background-color: white;
-                overflow: hidden;
-
-                li {
-
-                    display: inline-block;
-                    padding: 5px;
-                    width: 100%;
-
-                    a {
-                        border-radius: 4px;
-                        display: block;
-                        padding: 10px;
-                        color: gray;
-                        width: 100%;
-                        font-size: 12px;
-                    }
-
-                    &:hover a {
-                        background-color: $bgc-color;
-                        color: white;
-                    }
-                }
-
-                .active {
-                    background-color: $bgc-color;
-                    color: white;
-                }
-            }
-
-           
-
-            .ordering {
-                display: inline-block;
-                position: relative;
-                margin-left: 30px;
-                text-align: center;
-                width: 40%;
-                padding: 10px;
-                margin-top: 10px;
-                border: 1px solid $font-gray;
-                &:hover {
-                    .showList {
-                    opacity: 1;
-                    transform: translateY(0%);
-                    visibility: unset;
-                }
-                .arrowIcon {
-                    transform: rotate(180deg) translateY(-20%);
-                }
-            }
-                p {
-                    margin: 0;
-                }
-
-                .arrowIcon {
-                    width: 1.625em;
-                    vertical-align: none;
-                    transform: translateY(-10%);
-
-                }
-            }
-        }
+      p,
+      ul {
+        display: inherit;
+        padding-left: 10px;
+      }
     }
+
+    .amount {
+      padding: 5px;
+      cursor: pointer;
+
+      &:hover {
+        color: $bgc-color;
+      }
+    }
+    .active {
+      color: $bgc-color;
+    }
+    .toolbarRight {
+      grid-area: 1 / 2 / 2 / 3;
+
+      .vievToogle {
+        margin-left: 40px;
+        display: inline-block;
+        .icon {
+          margin-left: 10px;
+          font-size: 20px;
+          transition: 0.2s linear all;
+          cursor: pointer;
+          &:hover {
+            color: $bgc-color;
+          }
+        }
+      }
+    }
+  }
+  .fadeIn {
+    width: 25%;
+  }
+  .eachProduct {
+    width: 25%;
+    display: inline-block;
+  }
 }

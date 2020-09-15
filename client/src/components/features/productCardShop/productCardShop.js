@@ -4,27 +4,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSortDown, faTh, faList } from "@fortawesome/free-solid-svg-icons";
 import HorizontalProductBox from "../horizontalProductBox/horizontalProductBoxContainer";
 import ProductBox from "../../features/productBox/productBoxContainer";
-import productCardShopContainer from "./productCardShopContainer";
-import PropTypes from 'prop-types';
+import Option from '../option/option';
+import PropTypes from "prop-types";
+import FadeIn from 'react-fade-in';
 
 class ProductCardShop extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      productList: {
-        small: false,
-      },
-      amountProductOnList: {
-        value: 15,
-      },
-      category: {
-        activeCategory: null,
-      },
-      Option: {
-        activeOption : "",
-      }
-    };
-  }
+  state = {
+    small: false,
+    value: 15,
+  };
 
   componentDidMount() {
     const { loadProduct } = this.props;
@@ -33,29 +21,32 @@ class ProductCardShop extends Component {
 
   handleChangeShowList = () => {
     this.setState((prevState) => ({
-      productList: {
-        small: !prevState.productList.small,
-      },
+      small: !prevState.small,
     }));
   };
 
   handleChangeAmountProduct = (e) => {
     this.setState({
-      amountProductOnList: {
-        value: e.target.value,
-      },
+      value: e.target.value,
     });
   };
 
   render() {
-    const { request, products,category,searchProduct } = this.props;
-    const { small } = this.state.productList;
-    const { value } = this.state.amountProductOnList;
-    const categoryProduct = products.filter(item => item.category === category);
-    const elemsToDisplay = categoryProduct.length === 0 ? products.slice(0,value): categoryProduct.slice(0,value) ===0;
-    const ProductDisplay = searchProduct.length ===0 ? elemsToDisplay : searchProduct;
-console.log(ProductDisplay, searchProduct);
-
+    const {
+      request,
+      productRange,
+    } = this.props;
+    const { small, value } = this.state;
+    const ProductDisplay = productRange.slice(0, value)
+    
+    // console.log(
+    //   "product to display:",
+    //   ProductDisplay,
+    //   "searchProduct:",
+    //   searchProduct,
+    //   "product filter by category",
+    //   categoryProducts
+    // );
 
     if (request.pending) return <div>Pending</div>;
     else if (request.error) return <div>something is wrong</div>;
@@ -67,7 +58,9 @@ console.log(ProductDisplay, searchProduct);
           <div className={styles.toolbar}>
             <div className={styles.toolbarLeft}>
               <p className={styles.resultCount}>
-                Wyświetlanie {ProductDisplay.length <= value ? ProductDisplay.length : value} z {ProductDisplay.length} wyników
+                Wyświetlanie{" "}
+                {ProductDisplay.length <= value ? ProductDisplay.length : value}{" "}
+                z {ProductDisplay.length} wyników
               </p>
               <div className={styles.vievCount}>
                 <p> pokaż</p>
@@ -121,7 +114,8 @@ console.log(ProductDisplay, searchProduct);
                   onClick={this.handleChangeShowList}
                 />
               </div>
-              <div className={styles.ordering}>
+              <Option/>
+              {/* <div className={styles.ordering}>
                 <p>
                   sortuj
                   <FontAwesomeIcon
@@ -148,20 +142,27 @@ console.log(ProductDisplay, searchProduct);
                     <a href="/">Sortuj od najnowszych</a>
                   </li>
                 </ul>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className={styles.productCard}>
             {small === true ? (
               <>
                 {ProductDisplay.map((el) => (
-                  <ProductBox key={el._id} {...el} />
+                  <div className={styles.eachProduct}>
+                  <FadeIn>
+                  <ProductBox width={100} key={el._id} {...el} />
+                  </FadeIn>
+                  </div>
                 ))}
               </>
             ) : (
               <>
                 {ProductDisplay.map((el) => (
+                  
+                  <FadeIn>
                   <HorizontalProductBox key={el._id} {...el} />
+                  </FadeIn>
                 ))}
               </>
             )}
@@ -170,16 +171,12 @@ console.log(ProductDisplay, searchProduct);
       );
   }
 }
-ProductCardShop.propTypes ={
-  category:PropTypes.string,
-  products: PropTypes.array,
-  searchProduct:PropTypes.array,
-}
+ProductCardShop.propTypes = {
+  productRange: PropTypes.array,
+};
 
 ProductCardShop.defaultProps = {
-   category: '',
-   products:[],
-   searchProduct:[],
-}
+  productRange: [],
+};
 
 export default ProductCardShop;

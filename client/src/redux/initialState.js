@@ -6,11 +6,19 @@ const initialState = {
       error: null,
       success: null,
     },
+    option: {
+      defaultSort: true,
+      maxPriceSort:false,
+      minPriceSort:false,
+      popularitySort:false,
+      newsProductSort:false,
+    },
     search: '',
+    maxPrice:0,
+    minPrice:0,
   },
-  categories: '',
+  categories: {category: ''},
   order:[],
- 
   errorId:null,
 };
 

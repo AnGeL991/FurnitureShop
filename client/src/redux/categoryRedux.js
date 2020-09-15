@@ -1,7 +1,7 @@
 import initialState from "./initialState";
 
 /* Selectors */
-export const getCategory = ({ categories }) => categories.category;
+export const getCategory = ({ categories }) => categories;
 
 const reducerName = "categories";
 const createActionName = (name) => `api/${reducerName}/${name}`;
@@ -15,11 +15,11 @@ export const addCategory = (payload) => ({
 /*Reducer */
 export default function reducer(
   statePart = initialState.categories,
-  action = ''
+  action
 ) {
   switch (action.type) {
     case ADD_CATEGORY:
-      return statePart.category, action.payload ;
+      return {...statePart,category:action.payload.id};
     default:
       return statePart;
   }
