@@ -42,13 +42,6 @@ ProductBox.propTypes = {
   basket:PropTypes.array,
   addToBasket:PropTypes.func,
 };
-ProductBox.defaultProps = {
-  _id: "123",
-  image:
-    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80",
-  title: "Nazwa Testowa",
-  price: 13.54,
-  width: "calc(25% - 20px)",
-};
+
 
 export default ProductBox;

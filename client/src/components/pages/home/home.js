@@ -1,6 +1,6 @@
 import React from "react";
 import AboutCompany from "../../features/aboutCompany/aboutCompany";
-import ProductCard from "../../features/productCard/productCard";
+import ProductCard from "../../features/productCard/productCardContainer";
 import Works from '../../features/ourWorks/works';
 import Banner from '../../features/banner/banner';
 

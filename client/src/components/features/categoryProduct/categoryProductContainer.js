@@ -15,7 +15,7 @@ const mapStateToProps = (state) => ({
   minPrice: getMinPriceProduct(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   addCategories: (id) =>
     dispatch(
       addCategory({

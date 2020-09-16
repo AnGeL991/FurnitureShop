@@ -53,7 +53,7 @@
             padding: 5px;
             width: 100%;
 
-            a {
+            p {
                 border-radius: 4px;
                 display: block;
                 padding: 10px;
@@ -62,9 +62,10 @@
                 font-size: 12px;
             }
 
-            &:hover a {
+            &:hover p {
                 background-color: $bgc-color;
                 color: white;
+                cursor: pointer;
             }
         }
 

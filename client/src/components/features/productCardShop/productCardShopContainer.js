@@ -5,12 +5,14 @@ import {
   loadProductRequest,
   getMaxPriceOfProducts,
   getProductRange,
+  getSortArray,
 } from "../../../redux/productRedux";
 
 const mapStateToProps = (state) => ({
   request: getRequest(state),
   maxPrice: getMaxPriceOfProducts(state),
   productRange: getProductRange(state),
+  sortArray: getSortArray(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

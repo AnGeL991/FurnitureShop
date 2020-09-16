@@ -5,6 +5,22 @@ import initialState from "./initialState";
 /* Selectors */
 export const getAllProducts = ({ product }) => product.data;
 export const getRequest = ({ product }) => product.request;
+export const getOption = ({ product }) => product.option;
+export const getMinPriceProduct = ({ product }) => product.minPrice;
+export const getProductByCategory = ({product,categories})=>{
+  let category = [];
+  if(categories.category ===''){
+    category = product.data
+  }else {
+    category = product.data.filter(item=>item.category ===categories.category);
+    console.log(category);
+    return category.length === 0 ? []: category
+
+  }
+  
+  return category
+
+}
 export const getMaxPriceOfProducts = ({ product, categories }) => {
   let productPrice;
   if (product.search === "" && categories.category === "") {
@@ -25,14 +41,12 @@ export const getMaxPriceOfProducts = ({ product, categories }) => {
   }
   return productPrice;
 };
-export const getMinPriceProduct = ({ product }) => product.minPrice;
 export const getProductRange = ({ product, categories }) => {
   let arrayOfProduct;
   if (product.search === "" && categories.category === "") {
     arrayOfProduct = product.data.filter(
       (item) => item.price >= product.minPrice
     );
-    console.log(arrayOfProduct);
   } else if (product.search !== "") {
     const arrayOfSearchProduct = product.data.filter((item) =>
       new RegExp(product.search, "i").test(item.title)
@@ -49,11 +63,24 @@ export const getProductRange = ({ product, categories }) => {
       (item) => item.price >= product.minPrice
     );
   }
-
-  console.log("range", arrayOfProduct);
   return arrayOfProduct;
 };
 
+export const getSortArray =({product,categories})=>{
+  const option = product.option;
+  const sortArray =option.defaultSort === false ? getProductRange({product,categories}): [];
+  
+  if (option.defaultSort === true) {
+   
+  } else if (option.maxPriceSort === true) {
+    sortArray.sort((a, b) => (a.price < b.price ? 1 : -1));
+  } else if (option.minPriceSort === true) {
+    sortArray.sort((a, b) => (a.price > b.price ? 1 : -1));
+  } else if(option.newsProductSort ===true){
+    sortArray.sort();
+  }
+  return sortArray;
+}
 const reducerName = "products";
 const createActionName = (name) => `api/${reducerName}/${name}`;
 
@@ -104,12 +131,12 @@ export const setSearchValues = (type, value) => {
     },
   };
 };
-export const setOptionSort=(payload)=>{
-  return{
-    type:SET_OPTION_OF_SORT,
+export const setOptionSort = (payload) => {
+  return {
+    type: SET_OPTION_OF_SORT,
     payload,
-  }
-}
+  };
+};
 export default function reducer(statePart = initialState.product, action) {
   switch (action.type) {
     case LOAD_PRODUCT:
@@ -156,11 +183,13 @@ export default function reducer(statePart = initialState.product, action) {
       return {
         ...statePart,
         option: {
-          defaultSort: action.payload.name === 'defaultSort' ? true : false,
-          maxPriceSort: action.payload.name === 'maxPriceSort' ? true : false,
-          minPriceSort: action.payload.name === 'minPriceSort' ? true : false,
-          popularitySort: action.payload.name === 'popularitySort' ? true : false,
-          newsProductSort: action.payload.name === 'newsProductSort' ? true : false,
+          defaultSort: action.payload.option === "defaultSort" ? true : false,
+          maxPriceSort: action.payload.option === "maxPriceSort" ? true : false,
+          minPriceSort: action.payload.option === "minPriceSort" ? true : false,
+          popularitySort:
+            action.payload.option === "popularitySort" ? true : false,
+          newsProductSort:
+            action.payload.option === "newsProductSort" ? true : false,
         },
       };
     }

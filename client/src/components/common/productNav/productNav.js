@@ -1,40 +1,29 @@
 import React from "react";
 import styles from "./productNav.module.scss";
-import { NavLink } from "react-router-dom";
+import PropTypes from 'prop-types';
 
-class ProductNav extends React.Component {
-  constructor(props){
-    super(props);
-    this.handleTakeValue = this.handleTakeValue.bind(this);
-  }
 
-  handleTakeValue(e){
-    const nazwa = e.this.value;
-    console.log(nazwa);
-  }
-  render() {
+const  ProductNav = ({addCategories})=> {
+  const categories =[
+    {id:'new', name:'nowości'},
+    {id:'bed',name:'łózka'},
+    {id:'sofas',name:'sofas'},
+    {id:'kitchenFurniture',name:'meble kuchenne'},
+    {id:'tables',name:'stoły'},
+    {id:'shelves',name:'półki'},
+ ];  
+ 
+  
     return (
       <nav className={styles.productNav} id="homeProductNav">
         <ul className={styles.navList}>
-          <li>
-            <NavLink to="/home/news">Nowości</NavLink>
-          </li>
-          <li>
-            <NavLink to="/home/furniture">Meble</NavLink>
-          </li>
-          <li>
-            <NavLink to="/home/table">Stoliki</NavLink>
-          </li>
-          <li>
-            <NavLink to="/home/sofa">Sofy</NavLink>
-          </li>
-          <li>
-            <NavLink to="/home/accessories">Akcesoria</NavLink>
-          </li>
+         {categories.map(el => <li key={el.id} onClick={()=>addCategories(el.id)}><p>{el.name}</p></li>)}
         </ul>
       </nav>
     );
-  }
 }
 
+ProductNav.propTypes = {
+  addCategories:PropTypes.func,
+}
 export default ProductNav;

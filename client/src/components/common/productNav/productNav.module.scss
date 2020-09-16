@@ -11,10 +11,12 @@
       padding: 20px;
       transition: 0.1s linear all;
       position: relative;
-      a {
+      p {
         color: $font-dark;
         text-decoration: none;
         text-transform: uppercase;
+      
+       margin: 0;
       }
       &::after {
         content: "";
@@ -27,9 +29,10 @@
         transition: 0.2s linear all;
       }
       &:hover::after {
-        width: 100%;
+        width: 80%;
       }
-      &:hover a {
+      &:hover p {
+        cursor: pointer;
         color: $bgc-color;
       }
     }

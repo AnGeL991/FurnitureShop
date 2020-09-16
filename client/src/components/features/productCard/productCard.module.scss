@@ -29,7 +29,9 @@
 .productSection {
   margin: 0 auto;
   max-width: 1440px;
-
+  display: grid;
+  grid-template-columns: 0.2fr 1fr;
+  grid-template-rows: 1fr;
   .publicity,
   .productCard,
   .productBox {
@@ -37,9 +39,11 @@
   }
 
   .publicity {
-    width: 20%;
+
     padding: 20px;
     height: 100%;
+    border:1px solid black;
+    grid-area: 1 / 1 / 2 / 2; 
 
     .banner {
       box-shadow: inset -27px -11px 300px -19px rgba(0, 0, 0, 0.75);
@@ -48,9 +52,8 @@
   }
 
   .productCard {
+    grid-area: 1 / 2 / 2 / 3;
     padding: 20px;
     height: 100%;
-    width: 75%;
-    margin-left: 70px;
   }
 }

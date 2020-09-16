@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import styles from "./productCardShop.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSortDown, faTh, faList } from "@fortawesome/free-solid-svg-icons";
-import HorizontalProductBox from "../horizontalProductBox/horizontalProductBoxContainer";
-import ProductBox from "../../features/productBox/productBoxContainer";
-import Option from '../option/option';
+import { faTh, faList } from "@fortawesome/free-solid-svg-icons";
+import Option from '../option/optionContainer';
 import PropTypes from "prop-types";
-import FadeIn from 'react-fade-in';
+import RenderProducts from '../renderProducts/renderProducts'
 
 class ProductCardShop extends Component {
   state = {
@@ -35,18 +33,19 @@ class ProductCardShop extends Component {
     const {
       request,
       productRange,
+      sortArray,
     } = this.props;
     const { small, value } = this.state;
-    const ProductDisplay = productRange.slice(0, value)
+    const ProductDisplay = sortArray.length ===0?  productRange.slice(0, value): sortArray.slice(0,value);
     
-    // console.log(
-    //   "product to display:",
-    //   ProductDisplay,
-    //   "searchProduct:",
-    //   searchProduct,
-    //   "product filter by category",
-    //   categoryProducts
-    // );
+    console.log(
+      "product to display:",
+      ProductDisplay,
+      "searchProduct:",
+   
+      "product filter by category",
+     
+    );
 
     if (request.pending) return <div>Pending</div>;
     else if (request.error) return <div>something is wrong</div>;
@@ -115,68 +114,21 @@ class ProductCardShop extends Component {
                 />
               </div>
               <Option/>
-              {/* <div className={styles.ordering}>
-                <p>
-                  sortuj
-                  <FontAwesomeIcon
-                    icon={faSortDown}
-                    className={styles.arrowIcon}
-                  />
-                </p>
-                <ul className={styles.showList}>
-                  <li>
-                    <a href="/" className={styles.active}>
-                      Sortowanie domyślne
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/">Sortuj wg. ceny: od najwyższej</a>
-                  </li>
-                  <li>
-                    <a href="/">Sortuj wg. ceny: od najniższej</a>
-                  </li>
-                  <li>
-                    <a href="/">Sortuj wg. popularności</a>
-                  </li>
-                  <li>
-                    <a href="/">Sortuj od najnowszych</a>
-                  </li>
-                </ul>
-              </div> */}
             </div>
           </div>
-          <div className={styles.productCard}>
-            {small === true ? (
-              <>
-                {ProductDisplay.map((el) => (
-                  <div className={styles.eachProduct}>
-                  <FadeIn>
-                  <ProductBox width={100} key={el._id} {...el} />
-                  </FadeIn>
-                  </div>
-                ))}
-              </>
-            ) : (
-              <>
-                {ProductDisplay.map((el) => (
-                  
-                  <FadeIn>
-                  <HorizontalProductBox key={el._id} {...el} />
-                  </FadeIn>
-                ))}
-              </>
-            )}
-          </div>
+          <RenderProducts small={small} arreyToMap={ProductDisplay}/>
         </section>
       );
   }
 }
 ProductCardShop.propTypes = {
   productRange: PropTypes.array,
+  sortArray:PropTypes.array,
 };
 
 ProductCardShop.defaultProps = {
   productRange: [],
+  sortArray:[],
 };
 
 export default ProductCardShop;
