@@ -1,0 +1,46 @@
+.wrapper {
+    width: 1000vh;
+    height: 50%;
+    padding-bottom: 20px;
+    min-height: 370px;
+
+    .half {
+        display: inline-block;
+        position: relative;
+        height: 100%;
+        width: 205px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+        transition: 0.3s linear all;
+        margin-right:30px;
+      
+
+        .arrow {
+            opacity: 0;
+            z-index: 1;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 50px;
+            
+            transition: 0.3s linear all;
+        }
+        .left {
+            box-shadow: inset -200px 0px 300px -215px rgba(0, 0, 0, 0.8);
+        }
+        .right {
+            box-shadow: inset 200px 0px 300px -215px rgba(0, 0, 0, 0.8);
+        }
+
+        .arrow:first-of-type {
+            right: 0;
+        }
+    }
+    &:hover {
+    .half  {
+        box-shadow: 30px -10px 0px 0px rgba(0,0,0,0.1);
+    }
+    .arrow {
+        opacity:1;
+    }
+}
+}

@@ -34,7 +34,7 @@ class MiniProductList extends React.Component {
               <p>{order.description}Przykładowy opis techniczny rozmiary</p>
               <span className={styles.quantity}>
                 {order.amount} x
-                <span className={styles.amount}> {order.price} zł</span>
+                <span className={styles.amount}> {order.price.toFixed(2)} zł</span>
               </span>
             </div>
           </li>
@@ -48,7 +48,7 @@ class MiniProductList extends React.Component {
     const totalPrice = orders.reduce((total,order)=>{
       return total +(order.price* order.amount)
     },0)
-    return totalPrice;
+    return totalPrice.toFixed(2);
   }
 
   totalAmount =()=>{

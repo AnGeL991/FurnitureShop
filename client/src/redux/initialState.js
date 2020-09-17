@@ -17,6 +17,10 @@ const initialState = {
     maxPrice:0,
     minPrice:0,
   },
+  loading:{
+    isLoading:false,
+    duration:0,
+  },
   categories: {category: ''},
   order:[],
   errorId:null,

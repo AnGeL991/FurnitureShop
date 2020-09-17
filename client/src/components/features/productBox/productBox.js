@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch,faCartPlus } from "@fortawesome/free-solid-svg-icons";
 
 
-const ProductBox = ({ width, _id, title, price, image,addToBasket }) => {
+const ProductBox = ({addItem, width, _id, title, price, image,addToBasket }) => {
   return (
     <div
       className={styles.productBox}
@@ -21,14 +21,14 @@ const ProductBox = ({ width, _id, title, price, image,addToBasket }) => {
         </div>
         <div className={styles.circleBox}>
           <FontAwesomeIcon icon={faCartPlus} 
-          className={styles.icon} onClick={()=>addToBasket() } />
+          className={styles.icon} onClick={()=>addItem() } />
         </div>
 
         <img src={image} alt="product" />
       </div>
       <div className={styles.textBox}>
         <h3 className={styles.productTitle}>{title}</h3>
-        <p className={styles.price}>{price}zł</p>
+        <p className={styles.price}>{price.toFixed(2)}zł</p>
       </div>
     </div>
   );
@@ -41,6 +41,7 @@ ProductBox.propTypes = {
   width: PropTypes.string.isRequired,
   basket:PropTypes.array,
   addToBasket:PropTypes.func,
+  addItem:PropTypes.func,
 };
 
 

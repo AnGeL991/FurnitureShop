@@ -58,7 +58,7 @@ const CategoryProduct = ({addCategories,searchValue,maxPrice,setPriceValue,minPr
         <div className={styles.priceFilter}>
           <h4 className={styles.priceTitle}>Cena</h4>
           <div className={styles.rageSlider}>
-            <input type="range" min="0" max={maxPrice} step="1" onChange={(e)=>handleChangeValue(e)}/>
+            <input type="range" min="0" max={maxPrice} step="25" onChange={(e)=>handleChangeValue(e)}/>
             <Button margin="50px 0 0 0" width="50%" uppercase={false}>
               Filtruj
             </Button>

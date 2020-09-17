@@ -63,15 +63,16 @@ export const getProductRange = ({ product, categories }) => {
       (item) => item.price >= product.minPrice
     );
   }
+  arrayOfProduct.sort((a,b)=>(a.price >b.price)? 1:-1);
   return arrayOfProduct;
 };
 
 export const getSortArray =({product,categories})=>{
   const option = product.option;
   const sortArray =option.defaultSort === false ? getProductRange({product,categories}): [];
-  
+ 
   if (option.defaultSort === true) {
-   
+    sortArray.sort((a, b) => (a.price < b.price ? 1 : -1));
   } else if (option.maxPriceSort === true) {
     sortArray.sort((a, b) => (a.price < b.price ? 1 : -1));
   } else if (option.minPriceSort === true) {
@@ -79,6 +80,7 @@ export const getSortArray =({product,categories})=>{
   } else if(option.newsProductSort ===true){
     sortArray.sort();
   }
+  console.log(sortArray)
   return sortArray;
 }
 const reducerName = "products";

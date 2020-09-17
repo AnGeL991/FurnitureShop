@@ -20,12 +20,8 @@ class ProductCard extends React.Component{
 <ProductNav/>
 <div className={styles.productSection}>
   <div className={styles.publicity}>
-   <div>
-     50%
-   </div>
-   <div>
-     50%
-   </div>
+    <PublicitySlider/>
+  
   </div>
   <div className={styles.productCard}>
     <RenderProduct arreyToMap={products} small={true} />
