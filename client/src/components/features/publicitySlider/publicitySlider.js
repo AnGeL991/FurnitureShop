@@ -8,7 +8,6 @@ import EachPublicity from "../../common/eachPublicity/eachPublicity";
 const PublicitySlider = () => {
   return (
     <section id="publictySlider" className={styles.contentBox}>
-      
       <EachPublicity/>
       <EachPublicity/>
     </section>

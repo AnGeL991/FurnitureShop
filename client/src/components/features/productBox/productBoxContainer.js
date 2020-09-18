@@ -8,13 +8,13 @@ const mapStateToProps = state => ({
   });
 
 const mapDispatchToProps = (dispatch, props)=>({
-    // addToBasket: ()=>
-    // dispatch(
-    //     addToBasket({
-    //     id:props.id,
-    //     ...props,
-    // }),
-    // ),
+    addToBasket: ()=>
+    dispatch(
+        addToBasket({
+        id:props.id,
+        ...props,
+    }),
+    ),
     addItem:()=>
     dispatch(addItem({
         ...props

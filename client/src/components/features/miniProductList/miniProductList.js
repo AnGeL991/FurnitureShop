@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../common/button/button";
 import PropTypes from "prop-types";
+import RenderOrderList from '../renderOrderList/renderOrderListContainer';
 
 class MiniProductList extends React.Component {
   state = {
@@ -86,7 +87,8 @@ class MiniProductList extends React.Component {
         >
           {orders.length >0 ? <> <div className={styles.contentShopingCart}>
             <ul className={styles.productList}>
-              {this.renderList()}
+              {/* {this.renderList()} */}
+              <RenderOrderList/>
             </ul>
             <p className={styles.miniCardTotal}>
               <strong>Kwota: </strong>
@@ -121,14 +123,6 @@ MiniProductList.protoType = {
   orders: PropTypes.array,
   removeFromBasekt:PropTypes.func,
 };
-MiniProductList.defaultProps = {
-  id: "asda",
-  image:
-    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80",
-  title: "przykład",
-  price: "1350",
-  amount: 2,
-  description: "przykładowy opis",
-};
+
 
 export default MiniProductList;

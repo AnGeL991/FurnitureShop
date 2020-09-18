@@ -21,7 +21,7 @@ const ProductBox = ({addItem, width, _id, title, price, image,addToBasket }) => 
         </div>
         <div className={styles.circleBox}>
           <FontAwesomeIcon icon={faCartPlus} 
-          className={styles.icon} onClick={()=>addItem() } />
+          className={styles.icon} onClick={()=>addToBasket() } />
         </div>
 
         <img src={image} alt="product" />

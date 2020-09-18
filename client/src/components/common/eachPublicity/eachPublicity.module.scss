@@ -1,46 +1,64 @@
+@import "../../../styles/settings.scss";
 .wrapper {
-    width: 1000vh;
-    height: 50%;
-    padding-bottom: 20px;
-    min-height: 370px;
+  width: 1000vh;
+  height: 50%;
+  padding-bottom: 20px;
+  min-height: 370px;
+  font-family: "Amatic SC", cursive;
 
-    .half {
-        display: inline-block;
-        position: relative;
-        height: 100%;
-        width: 205px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
-        transition: 0.3s linear all;
-        margin-right:30px;
-      
+  .half {
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    width: 205px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+    transition: 0.5s linear all;
+    margin-right: 30px;
 
-        .arrow {
-            opacity: 0;
-            z-index: 1;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 50px;
-            
-            transition: 0.3s linear all;
-        }
-        .left {
-            box-shadow: inset -200px 0px 300px -215px rgba(0, 0, 0, 0.8);
-        }
-        .right {
-            box-shadow: inset 200px 0px 300px -215px rgba(0, 0, 0, 0.8);
-        }
+    .arrow {
+      opacity: 0;
+      z-index: 1;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 50px;
 
-        .arrow:first-of-type {
-            right: 0;
-        }
+      transition: 0.3s linear all;
     }
-    &:hover {
-    .half  {
-        box-shadow: 30px -10px 0px 0px rgba(0,0,0,0.1);
+    .left {
+      box-shadow: inset -200px 0px 300px -120px rgba(0, 0, 0, 0.8);
+    }
+    .right {
+      box-shadow: inset 200px 0px 300px -120px rgba(0, 0, 0,0.8);
+    }
+    .publicityProduct {
+      background-size: cover;
+      height: 100%;
+      position: relative;
+    }
+    .arrow:first-of-type {
+      right: 0;
+    }
+    .context {
+      position: absolute;
+      top: 25%;
+      color: white;
+      text-shadow: 2px 2px black;;
+      font-size: 42px;
+      transform: rotate(-45deg);
+    }
+    .contexBox{
+        height: 100%;
+        background: rgb(183, 67, 52);
+                background: linear-gradient(45deg, rgba(183,67,52,1) 0%, rgba(183,67,52,0) 100%, rgba(183,67,52,0) 100%);
+    }
+  }
+  &:hover {
+    .half {
+      box-shadow: 30px -10px 0px 0px rgba(0, 0, 0, 0.1);
     }
     .arrow {
-        opacity:1;
+      opacity: 1;
     }
-}
+  }
 }
