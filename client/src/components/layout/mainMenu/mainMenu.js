@@ -20,9 +20,6 @@ const MainMenu = () => {
             <NavLink to="/shop">sklep</NavLink>
           </li>
           <li>
-            <NavLink to="/realization">realizacja</NavLink>
-          </li>
-          <li>
             <NavLink to="/blog">blog</NavLink>
           </li>
           <li>

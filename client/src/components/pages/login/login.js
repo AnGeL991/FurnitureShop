@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./login.module.scss";
 import Container from "../../layout/container/container";
+import { NavLink } from "react-router-dom";
 import Header from "../../common/headerTitle/header";
-import PublicitySlider from "../../features/publicitySlider/publicitySlider";
 
 const Login = () => {
   return (
@@ -68,7 +68,24 @@ const Login = () => {
             </form>
           </section>
           <div className={styles.publicity}>
-            <PublicitySlider radius="none" />
+            <div className={styles.newProductBanner}>
+              <NavLink to="/shop">
+                <div className={styles.bgc}>
+                  <p className={styles.description}>
+                    Najlepsze i najnowsze modele jedynie u nas
+                  </p>
+                </div>
+              </NavLink>
+            </div>
+            <div className={styles.discountBanner}>
+              <NavLink to="/shop">
+                <div className={styles.bgc}>
+                  <p className={styles.description}>
+                    Konkurencyjne ceny!!! Sprawdz sam
+                  </p>
+                </div>
+              </NavLink>
+            </div>
           </div>
         </div>
       </Container>

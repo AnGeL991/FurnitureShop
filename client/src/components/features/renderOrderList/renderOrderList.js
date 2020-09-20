@@ -18,7 +18,7 @@ const RenderOrderList =({orders,removeFromBasekt})=>{
               className={styles.miniCardImage}
               alt="miniCardProduct"
             />
-            <a href="#" className={styles.miniProductTitle}>
+            <a href="/shop" className={styles.miniProductTitle}>
               {order.title}
             </a>
             <div className={styles.miniProductContent}>

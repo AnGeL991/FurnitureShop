@@ -1,0 +1,41 @@
+@import '../../../styles/settings.scss';
+.wrapper{
+    border:1px solid black;
+    max-width: 1220px;
+    margin:0 auto;
+    height: 80vh;
+    padding:40px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    .imageBox,.contentBox{
+        margin:0 20px;
+        text-align: center;
+    }
+    .imageBox{
+        grid-area: 1 / 1 / 2 / 2; 
+        border:1px solid black;
+        .productImage{
+            width: 50%;
+            object-fit: cover;
+        }
+    }
+    .contentBox{
+        grid-area: 1 / 2 / 2 / 3;
+        border:1px solid black;
+       .price{
+           border:1px solid black;
+           font-size: 24px;
+           color:$font-dark;
+       }
+       .variationsForm{
+        border:1px solid black;
+       }
+       .variations{
+        border:1px solid black;
+       }
+       .variationsButton{
+        border:1px solid black;
+       }
+    }
+    
+}

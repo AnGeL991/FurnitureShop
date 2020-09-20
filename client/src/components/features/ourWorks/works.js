@@ -16,19 +16,19 @@ const Works = () => {
         <div className={styles.eachWork}>
           <img src="/image/work2.jpg" alt="logoCompany" />
           <div className={styles.bgc}>
-            <h3 className={styles.subtitle}>test</h3>
+            <h3 className={styles.subtitle}>Na pewno się nie zawiedziesz</h3>
           </div>
         </div>
         <div className={styles.eachWork}>
           <img src="/image/work3.jpg" alt="logoCompany" />
           <div className={styles.bgc}>
-            <h3 className={styles.subtitle}>test</h3>
+            <h3 className={styles.subtitle}>Zostań kolejnym szczęśliwym klientem</h3>
           </div>
         </div>
         <div className={styles.eachWork}>
           <img src="/image/work4.jpg" alt="logoCompany" />
           <div className={styles.bgc}>
-            <h3 className={styles.subtitle}>test</h3>
+            <h3 className={styles.subtitle}>Sprawdz nas!!!!</h3>
           </div>
         </div>
       </div>

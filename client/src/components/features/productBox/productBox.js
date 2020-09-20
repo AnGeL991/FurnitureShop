@@ -1,29 +1,37 @@
-/** @jsx jsx */
-import { css, jsx } from "@emotion/core";
+import React from "react"
 import styles from "./productBox.module.scss";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch,faCartPlus } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faCartPlus } from "@fortawesome/free-solid-svg-icons";
 
-
-const ProductBox = ({addItem, width, _id, title, price, image,addToBasket }) => {
+const ProductBox = ({
+  width,
+  _id,
+  title,
+  price,
+  image,
+  addToBasket,
+}) => {
   return (
     <div
       className={styles.productBox}
       id={_id}
-      css={css`
-        width: ${width};
-      `}
+      style={{width:`${width}`}}
+      
     >
       <div className={styles.img}>
-        <div className={styles.circleBox}>
-          <FontAwesomeIcon icon={faSearch} className={styles.icon} />
+        <div className={styles.actionIcon}>
+          <div className={styles.circleBox}>
+            <FontAwesomeIcon icon={faSearch} className={styles.icon} />
+          </div>
+          <div className={styles.circleBox}
+           onClick={() => addToBasket()}>
+            <FontAwesomeIcon
+              icon={faCartPlus}
+              className={styles.icon}
+            />
+          </div>
         </div>
-        <div className={styles.circleBox}>
-          <FontAwesomeIcon icon={faCartPlus} 
-          className={styles.icon} onClick={()=>addToBasket() } />
-        </div>
-
         <img src={image} alt="product" />
       </div>
       <div className={styles.textBox}>
@@ -39,10 +47,9 @@ ProductBox.propTypes = {
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   width: PropTypes.string.isRequired,
-  basket:PropTypes.array,
-  addToBasket:PropTypes.func,
-  addItem:PropTypes.func,
+  basket: PropTypes.array,
+  addToBasket: PropTypes.func,
+  addItem: PropTypes.func,
 };
-
 
 export default ProductBox;

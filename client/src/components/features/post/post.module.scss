@@ -3,7 +3,7 @@
 .eachPost {
     border: 0.5px solid $font-gray;
     margin: 20px 0;
-
+    transition: 0.3s linear all;
     .wrapper {
         display: grid;
         grid-template-columns: 0.8fr 1fr;

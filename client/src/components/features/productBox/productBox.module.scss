@@ -2,7 +2,7 @@
 
 .productBox{
     font-family: $font-family;
-    height: 350px;
+    height: 250px;
     overflow: hidden;
     display: inline-block;
     padding:20px;
@@ -24,26 +24,34 @@
     .productTitle{
         text-transform: capitalize;
         text-align: center;
-
+        font-size: 16px;
+        font-weight: lighter;
     }
     .price{
-        font-size: 32px;
+        font-size: 22px;
         transform: translateY(100%);
         text-align: center;
         transition: 0.2s linear all;
     }
-    .circleBox{
-        position: absolute;
-        width: 40px;
+    .actionIcon{
+        width:100px;
         height: 40px;
-        border-radius: 50%;
-        background-color: white;
+        position: absolute;
         top:50%;
         left:50%;
         transform: translate(-50%,-50%);
         z-index: 999999;
-        transition: 0.2s linear all;
         display: none;
+    }
+    .circleBox{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: white;
+        display: inline-block;
+        margin:5px;
+        transition: 0.2s linear all;
+        position: relative;
         &:hover {
             background-color: $bgc-color;
             .icon{
@@ -73,7 +81,7 @@
         img{
             transform: scale(1.1);
         }
-        .circleBox {
+        .actionIcon {
             display: block;
         }
     }

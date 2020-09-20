@@ -9,3 +9,12 @@
 a, a:hover, a:visited {
     text-decoration: none;
   }
+
+.switchWrapper {
+    > :first-child ~ * {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+  }

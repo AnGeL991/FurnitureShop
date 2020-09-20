@@ -15,10 +15,7 @@
       height: 100%;
       width: 50%;
       color: white;
-      transition: 0.1s linear all;
-      &:hover {
-        transform: scale(1.05);
-      }
+      transition: 0.3s linear all;
     }
     .bannerSecond {
       display: inline-block;
@@ -30,9 +27,6 @@
       color: black;
       position: relative;
       transition: 0.1s linear all;
-      &:hover {
-        transform: scale(1.1);
-      }
       .btn {
         a {
           color: black;
@@ -60,6 +54,7 @@
       padding: 20px;
       top: 40%;
       left: 25%;
+      background: linear-gradient(45deg, rgba(183,67,52,1) 0%, rgba(183,67,52,0.48) 50%, rgba(0,0,0,0.5) 100%);
       a {
         font-size: 22px;
         font-weight: 700;

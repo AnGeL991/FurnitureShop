@@ -3,15 +3,15 @@ import styles from "./horizontalProductBox.module.scss";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch,faCartPlus } from "@fortawesome/free-solid-svg-icons";
+import {NavLink} from 'react-router-dom';
 
 
 
-
-const HorizontalProductBox = ({ id, image, title, price,addToBasket}) => {
+const HorizontalProductBox = ({_id,image, title, price,addToBasket}) => {
   
 
   return (
-    <div className={styles.horizontalProductBox} id={id}>
+    <div className={styles.horizontalProductBox} >
       <div className={styles.img}>
         <img src={image} alt="product" />
       </div>
@@ -23,7 +23,7 @@ const HorizontalProductBox = ({ id, image, title, price,addToBasket}) => {
         </p>
         <div className={styles.buttonBox}>
         <FontAwesomeIcon icon={faCartPlus} className={styles.buttonIcon} onClick={()=>addToBasket()}/>
-        <FontAwesomeIcon icon={faSearch} className={styles.buttonIcon}/>
+       <NavLink to={`/shop/product/${_id}`}> <FontAwesomeIcon icon={faSearch} className={styles.buttonIcon}/></NavLink>
       </div>
       </div>
     </div>
